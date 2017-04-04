@@ -1,5 +1,5 @@
-import React from 'react'
-import { IndexLink } from 'react-router'
+import React from "react";
+import { IndexLink } from "react-router";
 
 export const Nav = () => (
 	<div>
@@ -8,5 +8,6 @@ export const Nav = () => (
 		<IndexLink activeClassName='active' to='/about'>About</IndexLink>&nbsp;
 		<IndexLink activeClassName='active' to='/namedComponent'>Named Components</IndexLink>
 	</div>
-)
+);
+
 
