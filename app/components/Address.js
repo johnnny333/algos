@@ -8,3 +8,7 @@ export const Address = (props) => <div>
 	<h1>We are located at 555 Gosia St.</h1>
 	{props.children}
 </div>;
+
+export const Instagram = () => <h3> Instagram Feed </h3>;
+
+export const TwitterFeed = () => <h3> Twitter Feed </h3>;
