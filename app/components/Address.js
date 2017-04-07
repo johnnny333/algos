@@ -1,14 +1,39 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { Component } from "react";
 
-export const Address = (props) => <div>
-	<br /> 
-	<Link to='/address'>Twitter Feed </Link>
-	<Link to='/address/instagram'>Instagram Feed </Link>
-	<h1>We are located at 555 Gosia St.</h1>
-	{props.children}
-</div>;
+export class Address extends Component {
 
-export const Instagram = () => <h3> Instagram Feed </h3>;
+	handleFilterTextInputChange(e) {
+		console.log("Value " + e.target.value);
+		
+		let lo = 0;
+		let a = [1,2,3,4,5,7,2];
+		let hi = a.length - 1;
+		let key = e.target.value;
 
-export const TwitterFeed = () => <h3> Twitter Feed </h3>;
+		while (lo <= hi) {
+			// Key is in a[lo..hi] or not present.
+			let mid = lo + (hi - lo) / 2;
+			if (key < a[mid]) hi = mid - 1;
+			else if (key > a[mid]) lo = mid + 1;
+			else {console.log("mid " + mid); return mid;}
+		}
+		return -1;
+	}
+
+	render() {
+		return (
+
+			<form>
+		<br/>
+
+		Number to find: 
+		<input 
+		type = "number"
+		min="1"
+		max="10"
+		onChange = { this.handleFilterTextInputChange } /> 
+		
+		</form>
+		);
+	}
+}

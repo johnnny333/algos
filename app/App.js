@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
-import {Home} from "./components/Home";
-import {Address, Instagram, TwitterFeed} from "./components/Address";
-import {NotFound} from "./components/NotFound";
-import {About} from "./components/About";
-import {Container} from "./components/Container";
-import {NamedComponents, Title, SubTitle} from "./components/NamedComponents";
+import { Home } from "./components/Home";
+import { Address, Instagram, TwitterFeed } from "./components/Address";
+import { NotFound } from "./components/NotFound";
+import { About } from "./components/About";
+import { Container } from "./components/Container";
+import { NamedComponents, Title, SubTitle } from "./components/NamedComponents";
 
 class App extends Component {
-	render () {
+	render() {
 		return (
 			<Router history={hashHistory} >
 				<Route path='/' component={Container}>
@@ -23,7 +23,7 @@ class App extends Component {
 					</Route>
 					<Route path='*' component={NotFound} />
 				</Route>
-			</Router> 
+			</Router>
 		);
 	}
 }
