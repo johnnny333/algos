@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class Address extends Component {
+export class BinarySearch extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { key: 0, lo: 0, hi: 10, mid: -1, a: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] };
@@ -10,6 +10,7 @@ export class Address extends Component {
 	}
 
 	handleChange(event) {
+		this.clear();
 		this.setState({ key: event.target.value });
 	}
 
@@ -24,12 +25,11 @@ export class Address extends Component {
 		console.log("lo: " + lo + " hi: " + hi);
 
 		if (lo <= hi) {
-			// Key is in a[lo..hi] or not present.
 			let mid = Math.floor(lo + (hi - lo) / 2);
 			console.log("mid: " + mid);
 			if (key < a[mid]) {hi = mid - 1; console.log("smaller, hi:" + hi);this.setState({hi: hi});}
 			else if (key > a[mid]) {lo = mid + 1;console.log("bigger, lo" + lo); this.setState({lo: lo});}
-			else { console.log("at place:" + mid); this.setState({mid: mid});return mid; }
+			else {console.log("at place:" + mid); this.setState({mid: mid}); return mid; }
 		}
 		return -1;
 	}

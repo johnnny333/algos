@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import { Home } from "./components/Home";
-import { Address, Instagram, TwitterFeed } from "./components/Address";
+import { BinarySearch, Instagram, TwitterFeed } from "./components/BinarySearch";
 import { NotFound } from "./components/NotFound";
 import { About } from "./components/About";
 import { Container } from "./components/Container";
@@ -13,7 +13,7 @@ class App extends Component {
 			<Router history={hashHistory} >
 				<Route path='/' component={Container}>
 					<IndexRoute component={Home} />
-					<Route path='/address' component={Address} >
+					<Route path='/binary-search' component={BinarySearch} >
 						<IndexRoute component={TwitterFeed} />
 						<Route path='instagram' component={Instagram} />
 					</Route>
