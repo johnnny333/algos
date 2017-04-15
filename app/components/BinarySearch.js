@@ -3,11 +3,11 @@ import React, { Component } from "react";
 export class BinarySearch extends Component {
 
 	constructor(props) {
-		let arrLength = 44;
+		let arrLength = 25;
 
 		super(props);
-		this.state = { key: 0, lo: 0, hi: 44, mid: -1, a: Array.from({ length: arrLength }, (val, key) => key) , 
-			hint: "Pick a number and click 'find' to find your number." };
+		this.state = { key: 0, lo: 0, hi: arrLength, mid: -1, a: Array.from({ length: arrLength }, (val, key) => key) , 
+			hint: "Pick a number and click 'find' to find your number.", arrLength: arrLength };
 		this.handleChange = this.handleChange.bind(this);
 		this.clear = this.clear.bind(this);
 		this.indexOf = this.indexOf.bind(this);
@@ -41,8 +41,8 @@ export class BinarySearch extends Component {
 	}
 
 	clear(keyInput){
-		this.setState({mid: -1, hi:44, lo: 0});
-		this.setState({ key: keyInput });
+		this.setState({mid: -1, hi: this.state.arrLength, lo: 0});
+		this.setState({key: keyInput });
 		this.setState({hint: "Pick a number and click 'find' to find your number."});
 	}
 
@@ -56,7 +56,7 @@ export class BinarySearch extends Component {
 
 			<form>
 				Number to find: 
-				<input type = "number" min="1" max="44" onChange = { this.handleChange } />
+				<input type = "number" min="0" max={this.state.arrLength - 1} onChange = { this.handleChange } />
 				<button onClick={this.indexOf} >  Find </button>
 				<button onClick={this.clear} >  Clear </button>
 				<div>{this.state.hint}</div>
