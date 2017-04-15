@@ -1,0 +1,25 @@
+.active {
+    color: #53acff;
+}
+
+div > span {
+	display: inline-block;
+	width: 9%;
+	margin: 0.5%;
+	text-align: center;
+	padding: 3.5% 0px;
+	border-radius: 5%;
+	background-color: rgba(128, 128, 128, 0.58);
+}
+
+div > span:last-child {
+	margin-right: initial;	
+}
+
+div > span.found {
+	background-color: yellow;
+}
+
+div > span.selected{
+	background-color: grey;
+}

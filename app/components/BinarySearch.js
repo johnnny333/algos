@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 
 export class BinarySearch extends Component {
+
 	constructor(props) {
+		let arrLength = 44;
+
 		super(props);
-		this.state = { key: 0, lo: 0, hi: 10, mid: -1, a: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] };
+		this.state = { key: 0, lo: 0, hi: 44, mid: -1, a: Array.from({ length: arrLength }, (val, key) => key) , 
+			hint: "Pick a number and click 'find' to find your number." };
 		this.handleChange = this.handleChange.bind(this);
 		this.clear = this.clear.bind(this);
 		this.indexOf = this.indexOf.bind(this);
 	}
 
 	handleChange(event) {
-		this.clear();
-		this.setState({ key: event.target.value });
+		this.clear(event.target.value);
 	}
 
 	indexOf() {
@@ -29,13 +32,18 @@ export class BinarySearch extends Component {
 			console.log("mid: " + mid);
 			if (key < a[mid]) {hi = mid - 1; console.log("smaller, hi:" + hi);this.setState({hi: hi});}
 			else if (key > a[mid]) {lo = mid + 1;console.log("bigger, lo" + lo); this.setState({lo: lo});}
-			else {console.log("at place:" + mid); this.setState({mid: mid}); return mid; }
+			else {console.log("at place:" + mid); 
+				this.setState({mid: mid});
+				this.setState({hint: "Your number '" + mid + "' was found!"});
+				return mid; }
 		}
 		return -1;
 	}
 
-	clear(){
-		this.setState({mid: -1, hi:10, lo: 0});
+	clear(keyInput){
+		this.setState({mid: -1, hi:44, lo: 0});
+		this.setState({ key: keyInput });
+		this.setState({hint: "Pick a number and click 'find' to find your number."});
 	}
 
 	render() {
@@ -48,16 +56,19 @@ export class BinarySearch extends Component {
 
 			<form>
 				Number to find: 
-				<input type = "number" min="1" max="10" onChange = { this.handleChange } />
-				<button onClick={this.indexOf} >  Activate Lasers </button>
+				<input type = "number" min="1" max="44" onChange = { this.handleChange } />
+				<button onClick={this.indexOf} >  Find </button>
 				<button onClick={this.clear} >  Clear </button>
+				<div>{this.state.hint}</div>
 
+				<div>
 				{this.state.a.map(function(object, i){
 
-					if(i == mid){return <div style={{backgroundColor:"yellow"}} key={i}>{object}</div>;}
-					if(i >= lo && i <= hi){return <div key={i} style={{backgroundColor:"grey"}}>{object}</div>;}
-					return <div key={i} >{object}</div>;
+					if(i == mid){return <span className="found" key={i}>{object}</span>;}
+					if(i >= lo && i <= hi){return <span key={i} className="selected" >{object}</span>;}
+					return <span key={i} >{object}</span>;
 				})}
+				</div>
 
 			</form>
 		);
