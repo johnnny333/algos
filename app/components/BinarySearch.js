@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class BinarySearch extends Component {
 
 	constructor(props) {
-		let arrLength = 25;
+		let arrLength = 32;
 
 		super(props);
 		this.state = { key: 0, lo: 0, hi: arrLength, mid: -1, a: Array.from({ length: arrLength }, (val, key) => key) , 
@@ -14,6 +14,7 @@ export class BinarySearch extends Component {
 	}
 
 	handleChange(event) {
+		console.log("klucz: " + event.target.value);
 		this.clear(event.target.value);
 	}
 
@@ -56,9 +57,8 @@ export class BinarySearch extends Component {
 
 			<form>
 				Number to find: 
-				<input type = "number" min="0" max={this.state.arrLength - 1} onChange = { this.handleChange } />
+				<input type = "number" value={this.state.key} min="0" max={this.state.arrLength - 1} onChange = { this.handleChange } />
 				<button onClick={this.indexOf} >  Find </button>
-				<button onClick={this.clear} >  Clear </button>
 				<div>{this.state.hint}</div>
 
 				<div>
