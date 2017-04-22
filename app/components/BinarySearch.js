@@ -3,11 +3,11 @@ import React, { Component } from "react";
 export class BinarySearch extends Component {
 
 	constructor(props) {
-		let arrLength = 32;
+		let arrLength = 32, initialHint = "Pick a number and click 'find' to find your number.";
 
 		super(props);
 		this.state = { key: 0, lo: 0, hi: arrLength, mid: -1, a: Array.from({ length: arrLength }, (val, key) => key) , 
-			hint: "Pick a number and click 'find' to find your number.", arrLength: arrLength };
+			hint: initialHint, initialHint:initialHint, arrLength: arrLength };
 		this.handleChange = this.handleChange.bind(this);
 		this.clear = this.clear.bind(this);
 		this.indexOf = this.indexOf.bind(this);
@@ -31,8 +31,8 @@ export class BinarySearch extends Component {
 		if (lo <= hi) {
 			let mid = Math.floor(lo + (hi - lo) / 2);
 			console.log("mid: " + mid);
-			if (key < a[mid]) {hi = mid - 1; console.log("smaller, hi:" + hi);this.setState({hi: hi});}
-			else if (key > a[mid]) {lo = mid + 1;console.log("bigger, lo" + lo); this.setState({lo: lo});}
+			if (key < a[mid]) {hi = mid - 1; console.log("smaller, hi:" + hi);this.setState({hi: hi, hint: "Seeked number is smaller than half of current array [" + lo + "..." + hi + "]"});}
+			else if (key > a[mid]) {lo = mid + 1;console.log("bigger, lo" + lo); this.setState({lo: lo, hint: "Seeked number is bigger than half of current array [" + lo + "..." + hi + "]"});}
 			else {console.log("at place:" + mid); 
 				this.setState({mid: mid});
 				this.setState({hint: "Your number '" + mid + "' was found!"});
@@ -44,7 +44,7 @@ export class BinarySearch extends Component {
 	clear(keyInput){
 		this.setState({mid: -1, hi: this.state.arrLength, lo: 0});
 		this.setState({key: keyInput });
-		this.setState({hint: "Pick a number and click 'find' to find your number."});
+		this.setState({hint: this.state.initialHint});
 	}
 
 	render() {
@@ -55,7 +55,7 @@ export class BinarySearch extends Component {
 
 		return (
 
-			<form>
+			<div>
 				Number to find: 
 				<input type = "number" value={this.state.key} min="0" max={this.state.arrLength - 1} onChange = { this.handleChange } />
 				<button onClick={this.indexOf} >  Find </button>
@@ -69,8 +69,7 @@ export class BinarySearch extends Component {
 					return <span key={i} >{object}</span>;
 				})}
 				</div>
-
-			</form>
+			</div>
 		);
 	}
 }
