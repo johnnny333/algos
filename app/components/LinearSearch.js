@@ -42,7 +42,7 @@ export class LinearSearch extends React.Component {
 
 	handleChangeShuffle(){
 		this.setState({a: this.shuffle(this.state.a)});
-		this.clear(0);
+		this.clear(this.state.key);
 	}
 
 	clear(key){
@@ -51,10 +51,7 @@ export class LinearSearch extends React.Component {
 
 	indexOf() {
 
-		console.log("Value of i: " + this.state.i);
-
 		if(this.state.a[this.state.i] == this.state.key){
-			console.log("key found");
 			this.setState({found: this.state.i});
 		}else {
 			this.setState({i: this.state.i + 1});
@@ -85,7 +82,7 @@ export class LinearSearch extends React.Component {
 				{/* Render spans representing array elements */}	
 				{this.state.a.map(function(object, i){
 					if(i == found){return <span className="found" key={i}>{object}</span>;}
-					if(i == current_i){return <span className="selected" key={i}>{object}</span>;}
+					if(i <= current_i){return <span className="selected" key={i}>{object}</span>;}
 					return <span key={i} >{object}</span>;
 				})}
 			</div>
