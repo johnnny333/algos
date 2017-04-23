@@ -5,7 +5,7 @@ import { BinarySearch, Instagram, TwitterFeed } from "./components/BinarySearch"
 import { NotFound } from "./components/NotFound";
 import { LinearSearch } from "./components/LinearSearch";
 import { Container } from "./components/Container";
-import { NamedComponents, Title, SubTitle } from "./components/NamedComponents";
+import { BubbleSort } from "./components/BubbleSort";
 
 class App extends Component {
 	render() {
@@ -18,8 +18,7 @@ class App extends Component {
 						<Route path='instagram' component={Instagram} />
 					</Route>
 					<Route path='/linear-search'  component={LinearSearch} />
-					<Route path='/namedComponent' component={NamedComponents}>
-						<IndexRoute components={{ title: Title, subTitle: SubTitle }} />
+					<Route path='/bubble-sort' component={BubbleSort}>
 					</Route>
 					<Route path='*' component={NotFound} />
 				</Route>
