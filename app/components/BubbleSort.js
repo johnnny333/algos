@@ -4,7 +4,7 @@ export class BubbleSort extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { key: 0, a: this.shuffle(Array.from({ length: 20 }, (val, key) => key)), i: -1, found: null };
+		this.state = {a: this.shuffle(Array.from({ length: 10 }, (val, key) => key)), i: 0 };
 		this.shuffle = this.shuffle.bind(this);
 		this.sort = this.sort.bind(this);
 	}
@@ -34,34 +34,44 @@ export class BubbleSort extends React.Component {
 	}
 
 	sort() {
-		console.log("sort");
 
-		let change, temp, myTable = this.state.a;
-		do {
-			change = false;
-			for (var i = 0; i < myTable.length - 1; i++) {
-				if (myTable[i + 1] < myTable[i]) {
-					temp = myTable[i];
-					myTable[i] = myTable[i + 1];
-					myTable[i + 1] = temp;
-					change = true;
-				}
-			}
-		} while (change);
-		this.setState({a: myTable});
-		return myTable;
+		let change = false, temp, myTable = this.state.a;
+
+		console.log("value of i:" + this.state.i );
+
+		/*
+		* Check if the end of array was reached, and if, 
+		* reset the value of i to 0 and return.
+		*/
+		if(this.state.i == this.state.a.length -1 ){
+			console.log("end of array");
+			this.setState({i: 0});
+			return;
+		}
+
+		if (myTable[this.state.i + 1] < myTable[this.state.i]) {
+
+			temp = myTable[this.state.i];
+			myTable[this.state.i] = myTable[this.state.i + 1];
+			myTable[this.state.i + 1] = temp;
+			change = true;
+		}
+		this.setState({i: this.state.i + 1, a: myTable});
 	}
 
 	render() {
+
+		let currentI = this.state.i;
+
 		return (
 			<div>
-
 				<form onSubmit={e => (e.preventDefault())}>
 					<button onClick={this.sort} >Sort</button>
 				</form>
 
 			{ /* Render spans representing array elements */ }
 			{this.state.a.map(function(object, i) {
+				if(i == currentI){return <span className="selected" key={i}>{object}</span>;}
 				return <span key={i} >{object}</span>;
 			})
 			}
