@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-export class BinarySearch extends Component {
+export class BinarySearch extends React.Component {
 
 	constructor(props) {
 		let arrLength = 32, initialHint = "Pick a number and click 'find' to find your number.";
@@ -14,6 +14,7 @@ export class BinarySearch extends Component {
 	}
 
 	handleChange(event) {
+		event.preventDefault();
 		console.log("klucz: " + event.target.value);
 		this.clear(event.target.value);
 	}
@@ -56,19 +57,20 @@ export class BinarySearch extends Component {
 		return (
 
 			<div>
-				Number to find: 
-				<input type = "number" value={this.state.key} min="0" max={this.state.arrLength - 1} onChange = { this.handleChange } />
-				<button onClick={this.indexOf} >  Find </button>
-				<div>{this.state.hint}</div>
-
-				<div>
+				<form onSubmit={e => (e.preventDefault())}>
+					Number to find: 
+					<input type = "number" value={this.state.key} min="0" max={this.state.arrLength - 1} onChange = { this.handleChange } />
+					<button onClick={this.indexOf} >  Find </button>
+					<div>{this.state.hint}</div>
+				</form>	
+				
+				{/* Render spans representing array elements */}	
 				{this.state.a.map(function(object, i){
 
 					if(i == mid){return <span className="found" key={i}>{object}</span>;}
 					if(i >= lo && i <= hi){return <span key={i} className="selected" >{object}</span>;}
 					return <span key={i} >{object}</span>;
 				})}
-				</div>
 			</div>
 		);
 	}
