@@ -1,39 +1,15 @@
 import React from "react";
+import {shuffle} from "./HelperFunctions";
 
 export class LinearSearch extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {key: 0, a: this.shuffle( Array.from({ length: 20 }, (val, key) => key) ), i: -1, found: null };
-		this.shuffle = this.shuffle.bind(this);
+		this.state = {key: 0, a: shuffle( Array.from({ length: 20 }, (val, key) => key) ), i: -1, found: null };
 		this.indexOf = this.indexOf.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 		this.clear = this.clear.bind(this);
-	}
-
-	/**
-	* Fisher-Yates Shuffle 
-	* http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
-	* https://bost.ocks.org/mike/shuffle/
-	*/
-	shuffle(array) {
-		let counter = array.length;
-
-		// While there are elements in the array
-		while (counter > 0) {
-			// Pick a random index
-			let index = Math.floor(Math.random() * counter); //5
-
-			// Decrease counter by 1
-			counter--; //9
-
-			// And swap the last element with it
-			let temp = array[counter]; //a[9]
-			array[counter] = array[index]; //a[9] = a[5]
-			array[index] = temp; //a[5] = 9
-		}
-		return array;
 	}
 
 	handleChange(event) {
@@ -41,7 +17,7 @@ export class LinearSearch extends React.Component {
 	}
 
 	handleChangeShuffle(){
-		this.setState({a: this.shuffle(this.state.a)});
+		this.setState({a: shuffle(this.state.a)});
 		this.clear(this.state.key);
 	}
 

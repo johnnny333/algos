@@ -1,4 +1,5 @@
 import React from "react";
+import {shuffle} from "./HelperFunctions";
 
 export class BubbleSort extends React.Component {
 
@@ -6,43 +7,17 @@ export class BubbleSort extends React.Component {
 		let arrLength = 8;
 
 		super(props);
-		this.state = { a: this.shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength - 1, swapped: false, changed: false };
-		this.shuffle = this.shuffle.bind(this);
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength - 1, swapped: false, changed: false };
 		this.sort = this.sort.bind(this);
-	}
-
-	/**
-	 * Fisher-Yates Shuffle 
-	 * http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
-	 * https://bost.ocks.org/mike/shuffle/
-	 */
-	shuffle(array) {
-		let counter = array.length;
-
-		// While there are elements in the array
-		while (counter > 0) {
-			// Pick a random index
-			let index = Math.floor(Math.random() * counter); //5
-
-			// Decrease counter by 1
-			counter--; //9
-
-			// And swap the last element with it
-			let temp = array[counter]; //a[9]
-			array[counter] = array[index]; //a[9] = a[5]
-			array[index] = temp; //a[5] = 9
-		}
-		return array;
 	}
 
 	sort() {
 
-		let swapped = this.state.swapped,
-			myTable = this.state.a;
+		let myTable = this.state.a;
 
 		console.log("value of i:" + this.state.i);
 
-		if (swapped) {
+		if (this.state.swapped) {
 			console.log("swapped");
 			this.setState({ swapped: false });
 			return;

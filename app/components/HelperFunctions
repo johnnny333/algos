@@ -1,0 +1,23 @@
+/**
+* Fisher-Yates Shuffle 
+* http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+* https://bost.ocks.org/mike/shuffle/
+*/
+export function	shuffle(array) {
+	let counter = array.length;
+		
+	// While there are elements in the array
+	while (counter > 0) {
+	// Pick a random index
+		let index = Math.floor(Math.random() * counter); //5
+
+		// Decrease counter by 1
+		counter--; //9
+
+		// And swap the last element with it
+		let temp = array[counter]; //a[9]
+		array[counter] = array[index]; //a[9] = a[5]
+		array[index] = temp; //a[5] = 9
+	}
+	return array;
+}
