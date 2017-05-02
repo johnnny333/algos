@@ -7,25 +7,26 @@ export class BubbleSort extends React.Component {
 		let arrLength = 8;
 
 		super(props);
-		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength - 1, swapped: false, changed: false };
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength - 1, swapped: false, changed: false, disabled: false };
 		this.sort = this.sort.bind(this);
+		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
+	}
+
+	handleChangeShuffle(){
+		this.setState({a: shuffle(this.state.a)});
+		this.setState({ i: this.state.a.length - 1, swapped: false, changed: false, disabled: false });
 	}
 
 	sort() {
 
 		let myTable = this.state.a;
 
-		console.log("value of i:" + this.state.i);
-
 		if (this.state.swapped) {
-			console.log("swapped");
 			this.setState({ swapped: false });
 			return;
 		}
 
 		if (myTable[this.state.i] < myTable[this.state.i - 1]) {
-
-			console.log("smalleer");
 
 			let temp = myTable[this.state.i - 1];
 			myTable[this.state.i - 1] = myTable[this.state.i];
@@ -41,9 +42,8 @@ export class BubbleSort extends React.Component {
 		 */
 		if (this.state.i == 1) {
 
-			console.log("end of array, i:");
 			if (!this.state.changed) {
-				console.log("Array sorted");
+				this.setState({disabled: true});
 				return;
 			} else {
 				this.setState({ i: this.state.a.length - 1, changed: false });
@@ -61,8 +61,11 @@ export class BubbleSort extends React.Component {
 
 		return (
 			<div>
+
+			<button onClick={this.handleChangeShuffle}>Shuffle</button>
+
 				<form onSubmit={e => (e.preventDefault())}>
-					<button onClick={this.sort} >Sort</button>
+					<button onClick={this.sort} disabled={this.state.disabled}>Sort</button>
 				</form>
 
 			{ /* Render spans representing array elements */ }

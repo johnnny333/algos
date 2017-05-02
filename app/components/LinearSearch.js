@@ -37,7 +37,7 @@ export class LinearSearch extends React.Component {
 
 	render() {
 
-		let found = this.state.found, current_i = this.state.i;
+		let found = this.state.found, currentIter = this.state.i, disabled = this.state.found != null ? true : false;
 
 		return (
 			<div>
@@ -52,13 +52,13 @@ export class LinearSearch extends React.Component {
 					<input type = "number" value={this.state.key} min="0" max={this.state.a.length -1} 
 						onChange = { this.handleChange } />
 					
-					<button onClick={this.indexOf} >Find</button>
+					<button onClick={this.indexOf} disabled={disabled}>Find</button>
 				</form>
 
 				{/* Render spans representing array elements */}	
 				{this.state.a.map(function(object, i){
 					if(i == found){return <span className="found" key={i}>{object}</span>;}
-					if(i <= current_i){return <span className="selected" key={i}>{object}</span>;}
+					if(i <= currentIter){return <span className="selected" key={i}>{object}</span>;}
 					return <span key={i} >{object}</span>;
 				})}
 			</div>
