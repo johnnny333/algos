@@ -3,10 +3,10 @@ import React from "react";
 export class BubbleSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 10;
+		let arrLength = 8;
 
 		super(props);
-		this.state = {a: this.shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength,found:false, change: false };
+		this.state = {a: this.shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength -1,found:false, change: false };
 		this.shuffle = this.shuffle.bind(this);
 		this.sort = this.sort.bind(this);
 	}
@@ -41,16 +41,6 @@ export class BubbleSort extends React.Component {
 
 		console.log("value of i:" + this.state.i );
 
-		/*
-		* Check if the end of array was reached, and if, 
-		* reset the value of i to 0 and return.
-		*/
-		if(this.state.i == 0 ){
-			console.log("end of array");
-			this.setState({i: this.state.a.length});
-			return;
-		}
-
 		if(change){
 			console.log("change");
 			this.setState({change: false});
@@ -60,22 +50,33 @@ export class BubbleSort extends React.Component {
 		if (myTable[this.state.i] < myTable[this.state.i - 1]) {
 
 			console.log("smalleer");
-			this.setState({found: false});
 
 			temp = myTable[this.state.i -1];
 			myTable[this.state.i - 1] = myTable[this.state.i];
 			myTable[this.state.i] = temp;
 			change = true;
 			this.setState({found: true, change: true});
+
 			return;
 		}
+
+		/*
+		* Check if the end of array was reached, and if, 
+		* reset the value of i to the start(end of array) and return.
+		*/
+		if(this.state.i == 1 ){
+			console.log("end of array, i:");
+			this.setState({i: this.state.a.length - 1});
+			return;
+		}
+
 		this.setState({i: this.state.i - 1, a: myTable});
 	}
 
 	render() {
 
 		let currentI = this.state.i, change = this.state.change,
-			found = change ? "found": "selected";
+			highlighting = change ? "found": "selected";
 
 		return (
 			<div>
@@ -86,8 +87,8 @@ export class BubbleSort extends React.Component {
 			{ /* Render spans representing array elements */ }
 			{this.state.a.map(function(object, i) {
 
-				if(i == currentI){return <span className={found} key={i}>{object}</span>;}
-				if(i == currentI - 1){return <span className={found} key={i}>{object}</span>;}
+				if(i == currentI){return <span className={highlighting} key={i}>{object}</span>;}
+				if(i == currentI - 1){return <span className={highlighting} key={i}>{object}</span>;}
 
 				return <span key={i} >{object}</span>;
 			})
