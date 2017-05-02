@@ -3,8 +3,10 @@ import React from "react";
 export class BubbleSort extends React.Component {
 
 	constructor(props) {
+		let arrLength = 10;
+
 		super(props);
-		this.state = {a: this.shuffle(Array.from({ length: 10 }, (val, key) => key)), i: 0 };
+		this.state = {a: this.shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength,found:false, change: false };
 		this.shuffle = this.shuffle.bind(this);
 		this.sort = this.sort.bind(this);
 	}
@@ -35,7 +37,7 @@ export class BubbleSort extends React.Component {
 
 	sort() {
 
-		let change = false, temp, myTable = this.state.a;
+		let change = this.state.change, temp, myTable = this.state.a;
 
 		console.log("value of i:" + this.state.i );
 
@@ -43,25 +45,37 @@ export class BubbleSort extends React.Component {
 		* Check if the end of array was reached, and if, 
 		* reset the value of i to 0 and return.
 		*/
-		if(this.state.i == this.state.a.length -1 ){
+		if(this.state.i == 0 ){
 			console.log("end of array");
-			this.setState({i: 0});
+			this.setState({i: this.state.a.length});
 			return;
 		}
 
-		if (myTable[this.state.i + 1] < myTable[this.state.i]) {
-
-			temp = myTable[this.state.i];
-			myTable[this.state.i] = myTable[this.state.i + 1];
-			myTable[this.state.i + 1] = temp;
-			change = true;
+		if(change){
+			console.log("change");
+			this.setState({change: false});
+			return;
 		}
-		this.setState({i: this.state.i + 1, a: myTable});
+
+		if (myTable[this.state.i] < myTable[this.state.i - 1]) {
+
+			console.log("smalleer");
+			this.setState({found: false});
+
+			temp = myTable[this.state.i -1];
+			myTable[this.state.i - 1] = myTable[this.state.i];
+			myTable[this.state.i] = temp;
+			change = true;
+			this.setState({found: true, change: true});
+			return;
+		}
+		this.setState({i: this.state.i - 1, a: myTable});
 	}
 
 	render() {
 
-		let currentI = this.state.i;
+		let currentI = this.state.i, change = this.state.change,
+			found = change ? "found": "selected";
 
 		return (
 			<div>
@@ -71,7 +85,10 @@ export class BubbleSort extends React.Component {
 
 			{ /* Render spans representing array elements */ }
 			{this.state.a.map(function(object, i) {
-				if(i == currentI){return <span className="selected" key={i}>{object}</span>;}
+
+				if(i == currentI){return <span className={found} key={i}>{object}</span>;}
+				if(i == currentI - 1){return <span className={found} key={i}>{object}</span>;}
+
 				return <span key={i} >{object}</span>;
 			})
 			}
