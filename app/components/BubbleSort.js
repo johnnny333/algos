@@ -6,7 +6,7 @@ export class BubbleSort extends React.Component {
 		let arrLength = 8;
 
 		super(props);
-		this.state = {a: this.shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength -1,found:false, change: false };
+		this.state = { a: this.shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength - 1, swapped: false, changed: false };
 		this.shuffle = this.shuffle.bind(this);
 		this.sort = this.sort.bind(this);
 	}
@@ -37,13 +37,14 @@ export class BubbleSort extends React.Component {
 
 	sort() {
 
-		let change = this.state.change, temp, myTable = this.state.a;
+		let swapped = this.state.swapped,
+			myTable = this.state.a;
 
-		console.log("value of i:" + this.state.i );
+		console.log("value of i:" + this.state.i);
 
-		if(change){
-			console.log("change");
-			this.setState({change: false});
+		if (swapped) {
+			console.log("swapped");
+			this.setState({ swapped: false });
 			return;
 		}
 
@@ -51,32 +52,37 @@ export class BubbleSort extends React.Component {
 
 			console.log("smalleer");
 
-			temp = myTable[this.state.i -1];
+			let temp = myTable[this.state.i - 1];
 			myTable[this.state.i - 1] = myTable[this.state.i];
 			myTable[this.state.i] = temp;
-			change = true;
-			this.setState({found: true, change: true});
+			this.setState({ swapped: true, changed: true });
 
 			return;
 		}
 
 		/*
-		* Check if the end of array was reached, and if, 
-		* reset the value of i to the start(end of array) and return.
-		*/
-		if(this.state.i == 1 ){
+		 * Check if the end of array was reached, and if, 
+		 * reset the value of i to the start(end of array) and return.
+		 */
+		if (this.state.i == 1) {
+
 			console.log("end of array, i:");
-			this.setState({i: this.state.a.length - 1});
+			if (!this.state.changed) {
+				console.log("Array sorted");
+				return;
+			} else {
+				this.setState({ i: this.state.a.length - 1, changed: false });
+			}
 			return;
 		}
 
-		this.setState({i: this.state.i - 1, a: myTable});
+		this.setState({ i: this.state.i - 1, a: myTable });
 	}
 
 	render() {
 
-		let currentI = this.state.i, change = this.state.change,
-			highlighting = change ? "found": "selected";
+		let currentI = this.state.i,
+			highlighting = this.state.swapped ? "found" : "selected";
 
 		return (
 			<div>
