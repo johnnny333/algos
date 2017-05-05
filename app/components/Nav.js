@@ -7,7 +7,8 @@ export const Nav = () => (
 		<IndexLink activeClassName='active' to='/binary-search'>BinarySearch</IndexLink>&nbsp;
 		<IndexLink activeClassName='active' to='/linear-search'>LinearSearch</IndexLink>&nbsp;
 		<IndexLink activeClassName='active' to='/bubble-sort'>BubbleSort</IndexLink>&nbsp;
-		<IndexLink activeClassName='active' to='/selection-sort'>SelectionSort</IndexLink>
+		<IndexLink activeClassName='active' to='/selection-sort'>SelectionSort</IndexLink>&nbsp;
+		<IndexLink activeClassName='active' to='/insertion-sort'>InsertionSort</IndexLink>
 	</div>
 );
 
