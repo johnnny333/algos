@@ -33,7 +33,7 @@ export class BinarySearch extends React.Component {
 	}
 
 	render() {
-		let mid = this.state.mid, lo = this.state.lo, hi = this.state.hi, disabled = mid != -1 ? true: false;
+		let mid = this.state.mid, lo = this.state.lo, hi = this.state.hi;
 
 		return (
 			<div>
@@ -42,7 +42,7 @@ export class BinarySearch extends React.Component {
 					<input type = "number" value={this.state.key} min="0" max={this.state.arrLength - 1} 
 						onChange = { this.handleChange } />
 
-					<button onClick={this.indexOf} disabled={disabled}>Find</button>
+					<button onClick={this.indexOf} disabled={this.state.mid != -1 ? true: false} >Find</button>
 					<div>{this.state.hint}</div>
 				</form>	
 				

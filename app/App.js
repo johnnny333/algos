@@ -12,6 +12,8 @@ import { BubbleSort } from "./components/sorting/BubbleSort";
 import { SelectionSort } from "./components/sorting/SelectionSort";
 import { InsertionSort } from "./components/sorting/InsertionSort";
 
+import { EuclidianAlgorithm } from "./components/arithmetic_algos/EuclidianAlgorithm";
+
 class App extends Component {
 	render() {
 		return (
@@ -23,6 +25,7 @@ class App extends Component {
 					<Route path='/bubble-sort' component={BubbleSort} />
 					<Route path='/selection-sort' component={SelectionSort} />
 					<Route path='/insertion-sort' component={InsertionSort} />
+					<Route path='/euclidian-algorithm' component={EuclidianAlgorithm} />
 					<Route path='*' component={NotFound} />
 				</Route>
 			</Router>
