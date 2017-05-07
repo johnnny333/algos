@@ -1,5 +1,5 @@
 import React from "react";
-import { shuffle } from "./HelperFunctions";
+import { shuffle } from "../../helpers/HelperFunctions";
 
 export class InsertionSort extends React.Component {
 

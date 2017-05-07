@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
-import { Home } from "./components/Home";
-import { BinarySearch } from "./components/BinarySearch";
-import { NotFound } from "./components/NotFound";
-import { LinearSearch } from "./components/LinearSearch";
-import { Container } from "./components/Container";
-import { BubbleSort } from "./components/BubbleSort";
-import { SelectionSort } from "./components/SelectionSort";
-import { InsertionSort } from "./components/InsertionSort";
+
+import { Home } from "./components/navigation/Home";
+import { NotFound } from "./components/navigation/NotFound";
+import { Container } from "./components/navigation/Container";
+
+import { BinarySearch } from "./components/searching/BinarySearch";
+import { LinearSearch } from "./components/searching/LinearSearch";
+
+import { BubbleSort } from "./components/sorting/BubbleSort";
+import { SelectionSort } from "./components/sorting/SelectionSort";
+import { InsertionSort } from "./components/sorting/InsertionSort";
 
 class App extends Component {
 	render() {

@@ -1,5 +1,5 @@
 import React from "react";
-import { shuffle } from "./HelperFunctions";
+import { shuffle } from "../../helpers/HelperFunctions";
 
 export class SelectionSort extends React.Component {
 
@@ -36,7 +36,6 @@ export class SelectionSort extends React.Component {
 			if (myTable[j] < min) {
 				min = myTable[j];
 				minIndex = j;
-				console.log("minIndex: " + minIndex);
 			}
 		}
 		this.setState({ minIndex: minIndex });
@@ -47,7 +46,6 @@ export class SelectionSort extends React.Component {
 
 		let currentIter = this.state.i, minIndex = this.state.minIndex,
 			disabled = this.state.minIndex == this.state.a.length ? true : false;
-		console.log("minIndex: " + this.state.minIndex);
 
 		return (
 			<div>
