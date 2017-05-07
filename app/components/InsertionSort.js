@@ -7,40 +7,38 @@ export class InsertionSort extends React.Component {
 		let arrLength = 8;
 
 		super(props);
-		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: 0, j: null, klucz: null };
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), 
+			i: 0, j: null, currentKey: null };
 		this.sort = this.sort.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 	}
 
+	// Shuffle an array and reset component to its initial state
 	handleChangeShuffle() {
 		this.setState({ a: shuffle(this.state.a), i: 0, j: null });
 	}
 
 	sort() {
 
-		let klucz = this.state.klucz, j = this.state.j, tablica = this.state.a, i = this.state.i + 1;
+		let currentKey = this.state.currentKey, j = this.state.j, 
+			sortedArray = this.state.a, i = this.state.i + 1;
 
-		console.log("value of i: " + i);
+		//Insert currently selected, presorted element at right position.
+		if (j > 0 && sortedArray[j - 1] > currentKey) {
 
-		if (j > 0 && tablica[j - 1] > klucz) {
-
-			console.log("j: " + j);
-
-			tablica[j] = tablica[j - 1];
+			sortedArray[j] = sortedArray[j - 1];
 			j--;
-			tablica[j] = klucz;
+			sortedArray[j] = currentKey;
 			this.setState({ j: j });
 
-		} else if(j < tablica.length) {
+		//Traverse array one index further.  	
+		} else if(j < sortedArray.length) {
 
-			let j = i, klucz = tablica[i];
+			let j = i, currentKey = sortedArray[i];
+			this.setState({ a: sortedArray, i: i, j: j, currentKey: currentKey });
 
-			console.log("else j: " + j)
-
-			this.setState({ a: tablica, i: i, j: j, klucz: klucz });
+		//Sort is done
 		} else {
-			console.log("sort done");
-			//Sort is done
 			return;
 		}
 	}
