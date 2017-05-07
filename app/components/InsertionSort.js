@@ -7,14 +7,13 @@ export class InsertionSort extends React.Component {
 		let arrLength = 8;
 
 		super(props);
-		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: 0, j: null,
-			klucz: null };
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: 0, j: null, klucz: null };
 		this.sort = this.sort.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 	}
 
 	handleChangeShuffle() {
-		this.setState({ a: shuffle(this.state.a), i: 0 });
+		this.setState({ a: shuffle(this.state.a), i: 0, j: null });
 	}
 
 	sort() {
@@ -23,57 +22,41 @@ export class InsertionSort extends React.Component {
 
 		console.log("value of i: " + i);
 
-		if(j > 0 && tablica[j - 1] > klucz) {
+		if (j > 0 && tablica[j - 1] > klucz) {
 
-				console.log("j: " + j);
+			console.log("j: " + j);
 
-				tablica[j] = tablica[j - 1];
-				j--;
-				tablica[j] = klucz;
-				this.setState({j: j});
+			tablica[j] = tablica[j - 1];
+			j--;
+			tablica[j] = klucz;
+			this.setState({ j: j });
 
-			} else {
+		} else if(j < tablica.length) {
 
-				// i += 1;
-				let j = i;
-				let klucz = tablica[i];
+			let j = i, klucz = tablica[i];
 
-				console.log("else j: " + j)
+			console.log("else j: " + j)
 
-				this.setState({ a: tablica, i: i, j: j, klucz: klucz });
-			}
-			
-			// j = i;
-
-		//dla kazdego elementu tablicy do posortowania, poczawszy od drugiego
-		// for (i = 1; i < tablica.length; i++) {
-			
-			//poszukaj miejsca dla aktualnego elementu
-			//szukaj tylko w posortowanej juz czescie tablicy
-			//(czyli wsrod elementow o indeksach mniejszych od aktualnego)
-			//przesuwaj element w kiedunku poczatku tablicy
-			//tak dlugo, az przed nim jest element wiekszy i
-			//nie znajduje sie na poczatku tablicy
-			// while (j > 0 && tablica[j - 1] > klucz) {
-			// 	tablica[j] = tablica[j - 1];
-			// 	j--;
-			// }
-			// tablica[j] = klucz;
-		// }
-		
+			this.setState({ a: tablica, i: i, j: j, klucz: klucz });
+		} else {
+			console.log("sort done");
+			//Sort is done
+			return;
+		}
 	}
 
 	render() {
 
-		let currentIter = this.state.i, j = this.state.j;
+		let currentIter = this.state.i, j = this.state.j, 
+			disabled = this.state.j == this.state.a.length ? true : false;
 
 		return (
-			<div>
 
+			<div>
 			<button onClick={this.handleChangeShuffle}>Shuffle</button>
 
 				<form onSubmit={e => (e.preventDefault())}>
-					<button onClick={this.sort} >Sort</button>
+					<button onClick={this.sort} disabled={disabled} >Sort</button>
 				</form>
 
 			{ /* Render spans representing array elements */ }
