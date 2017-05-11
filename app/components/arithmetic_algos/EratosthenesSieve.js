@@ -4,19 +4,19 @@ export class EratosthenesSieve extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { n: 2, isPrime: [] };
+		this.state = { n: 2, isPrime: [], factor: 2 };
 		this.handleChange = this.handleChange.bind(this);
 		this.sieve = this.sieve.bind(this);
 	}
 
 	handleChange(event) {
-		this.setState({n: event.target.value, isPrime: []});
+		this.setState({n: event.target.value, isPrime: [], factor: 2});
 	}
 
 	sieve() {
 		//http://introcs.cs.princeton.edu/java/14array/PrimeSieve.java.html
 
-		let n = this.state.n, isPrime = this.state.isPrime;
+		let n = this.state.n, isPrime = this.state.isPrime, factor = this.state.factor;
 
         // initially assume all integers are prime
         if(!isPrime[2]){
@@ -28,7 +28,7 @@ export class EratosthenesSieve extends React.Component {
     	}
 
         // mark non-primes <= n using Sieve of Eratosthenes
-        for (let factor = 2; factor*factor <= n; factor++) {
+        if ( factor*factor <= n) {
 
             // if factor is prime, then mark multiples of factor as nonprime
             // suffices to consider mutiples factor, factor+1, ...,  n/factor
@@ -37,7 +37,13 @@ export class EratosthenesSieve extends React.Component {
                     isPrime[factor*j].isPrime = false;
                 }
             }
+            this.setState({factor: this.state.factor + 1})
+        } else {
+        	return;
         }
+
+
+        console.log("facor:" + factor);
 
         // count primes
         let primes = 0;
@@ -51,6 +57,8 @@ export class EratosthenesSieve extends React.Component {
 	}
 
 	render() {
+		//TODO this works only if factorial - input value - is > 3 
+		let disabled = this.state.factor * this.state.factor <= this.state.n ? false : true;
 
 		return (
 
@@ -61,7 +69,7 @@ export class EratosthenesSieve extends React.Component {
 				<input type = "number" value={this.state.n} min="2" max="300" 
 						onChange = { this.handleChange } />
 
-				<button onClick={this.sieve} >Find</button>
+				<button onClick={this.sieve}  >Find</button>
 
 			</form>
 
@@ -69,7 +77,7 @@ export class EratosthenesSieve extends React.Component {
 			{this.state.isPrime.map(function(object, i){
 
 					if(object.isPrime) {return <span key={i} className="found">{object.i}</span>}
-					else {return <span key={i} >x</span>}
+					else {return <span key={i} >{object.i}</span>}
 				})}
 
 			</div>
