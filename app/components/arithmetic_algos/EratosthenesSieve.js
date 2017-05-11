@@ -19,9 +19,13 @@ export class EratosthenesSieve extends React.Component {
 		let n = this.state.n, isPrime = this.state.isPrime;
 
         // initially assume all integers are prime
-        for (let i = 2; i <= n; i++) {
-            isPrime[i] = {isPrime: true, i: i};
-        }
+        if(!isPrime[2]){
+    		for (let i = 2; i <= n; i++) {
+            	isPrime[i] = {isPrime: true, i: i};
+        	}
+        	this.setState({isPrime: isPrime});
+        	return;
+    	}
 
         // mark non-primes <= n using Sieve of Eratosthenes
         for (let factor = 2; factor*factor <= n; factor++) {
