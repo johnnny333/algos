@@ -10,7 +10,8 @@ export const Nav = () => (
 		<IndexLink activeClassName='active' to='/selection-sort'>SelectionSort</IndexLink>&nbsp;
 		<IndexLink activeClassName='active' to='/insertion-sort'>InsertionSort</IndexLink>&nbsp;
 		<IndexLink activeClassName='active' to='/euclidian-algorithm'>EuclidianAlgorithm</IndexLink>&nbsp;
-		<IndexLink activeClassName='active' to='/fizz-buzz'>FizzBuzz</IndexLink>
+		<IndexLink activeClassName='active' to='/fizz-buzz'>FizzBuzz</IndexLink>&nbsp;
+		<IndexLink activeClassName='active' to='/fibonnaci-sequence'>FibonnaciSequence</IndexLink>
 	</div>
 );
 

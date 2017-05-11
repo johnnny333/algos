@@ -14,6 +14,7 @@ import { InsertionSort } from "./components/sorting/InsertionSort";
 
 import { EuclidianAlgorithm } from "./components/arithmetic_algos/EuclidianAlgorithm";
 import { FizzBuzz } from "./components/arithmetic_algos/FizzBuzz";
+import { FibonnaciSequence } from "./components/arithmetic_algos/FibonnaciSequence";
 
 class App extends Component {
 	render() {
@@ -28,6 +29,7 @@ class App extends Component {
 					<Route path='/insertion-sort' component={InsertionSort} />
 					<Route path='/euclidian-algorithm' component={EuclidianAlgorithm} />
 					<Route path='/fizz-buzz' component={FizzBuzz} />
+					<Route path='/fibonnaci-sequence' component={FibonnaciSequence} />
 					<Route path='*' component={NotFound} />
 				</Route>
 			</Router>

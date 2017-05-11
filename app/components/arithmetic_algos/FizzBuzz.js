@@ -23,21 +23,17 @@ export class FizzBuzz extends React.Component {
 		let i = this.state.i;
 
 		if (i % 15 == 0) {
-			console.log("FizzBuzz");
 			this.setState({text: "FizzBuzz"});
 		}
 		//for multiples of three print “Fizz” instead of the number
 		else if (i % 3 == 0) {
-			console.log("Fizz");
 			this.setState({text: "Fizz"});
 		}
 		// for the multiples of five print “Buzz”
 		else if (i % 5 == 0) {
-			console.log("Buzz");
 			this.setState({text: "Buzz"});
 		}
 		else {
-			console.log("end" + i);
 			this.setState({text: ""});
 		}
 	}
