@@ -42,9 +42,6 @@ export class EratosthenesSieve extends React.Component {
         	return;
         }
 
-
-        console.log("facor:" + factor);
-
         // count primes
         let primes = 0;
         for (let i = 2; i <= n; i++) {
@@ -52,13 +49,11 @@ export class EratosthenesSieve extends React.Component {
         }
 
         this.setState({isPrime: isPrime});
-
-        console.log("primes: " + primes);
 	}
 
 	render() {
-		//TODO this works only if factorial - input value - is > 3 
-		let disabled = this.state.factor * this.state.factor <= this.state.n ? false : true;
+
+		let disabled = this.state.factor > Math.floor(Math.sqrt(this.state.n)) ? true : false;
 
 		return (
 
@@ -69,7 +64,7 @@ export class EratosthenesSieve extends React.Component {
 				<input type = "number" value={this.state.n} min="2" max="300" 
 						onChange = { this.handleChange } />
 
-				<button onClick={this.sieve}  >Find</button>
+				<button onClick={this.sieve} disabled={disabled} >Find</button>
 
 			</form>
 
