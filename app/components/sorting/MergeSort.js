@@ -4,9 +4,9 @@ import { shuffle } from "../../helpers/HelperFunctions";
 export class MergeSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 9;
+		let arrLength = 10;
 		super(props);
-		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), works: [] };
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), works: [], finalArr: null };
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 		this.sort = this.sort.bind(this);
 		this.merge = this.merge.bind(this);
@@ -14,7 +14,7 @@ export class MergeSort extends React.Component {
 
 	// Shuffle an array and reset component to its initial state
 	handleChangeShuffle() {
-		this.setState({ a: shuffle(this.state.a) });
+		this.setState({ a: shuffle(this.state.a), works: [], finalArr: null });
 	}
 
 	sort(items) {
@@ -35,19 +35,16 @@ export class MergeSort extends React.Component {
 			}
 			work[j] = []; //in case of odd number of items
 		}
+
+		this.setState({ finalArr: work[0] });
 		return work[0];
 	}
 
 	merge(left, right) {
 		var result = [];
 
-		// console.log("left: " + left);
-		// console.log("right: " + right);
-
-		let arr = this.state.works.push(left.concat(right) );
-		this.setState({works: this.state.works })
-
-		// console.log(this.state.works)
+		this.state.works.push(left.concat(right) );
+		this.setState({works: this.state.works });
 
 		while (left.length > 0 && right.length > 0) {
 			if (left[0] < right[0]) {
@@ -60,6 +57,11 @@ export class MergeSort extends React.Component {
 	}
 
 	render() {
+
+		let finalArr;
+		if(this.state.finalArr != null){
+			finalArr = <div><span className="found" style={{width: 99 + "%"}}>{this.state.finalArr}</span></div>;
+		}
 
 		return (
 
@@ -76,12 +78,15 @@ export class MergeSort extends React.Component {
 				return <span key={i} >{object}</span>;
 			})
 			}
+
 			<div>
 			{this.state.works.map(function(object, i) {
-				return <span style={{width: object.length * 10 + "%"}} key={i} >{object}</span>;
+				return <span style={{width: (object.length * 10) - 1 + "%" }} key={i} ><span>{object}</span></span>;
 			})
 			}
 			</div>
+
+			{finalArr}
 
 			</div>
 		);
