@@ -4,9 +4,9 @@ import { shuffle } from "../../helpers/HelperFunctions";
 export class MergeSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 8;
+		let arrLength = 9;
 		super(props);
-		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)) };
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), works: [] };
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 		this.sort = this.sort.bind(this);
 		this.merge = this.merge.bind(this);
@@ -35,14 +35,19 @@ export class MergeSort extends React.Component {
 			}
 			work[j] = []; //in case of odd number of items
 		}
-		
-		console.log("array: " + work[0])
 		return work[0];
-
 	}
 
 	merge(left, right) {
 		var result = [];
+
+		// console.log("left: " + left);
+		// console.log("right: " + right);
+
+		let arr = this.state.works.push(left.concat(right) );
+		this.setState({works: this.state.works })
+
+		// console.log(this.state.works)
 
 		while (left.length > 0 && right.length > 0) {
 			if (left[0] < right[0]) {
@@ -51,7 +56,6 @@ export class MergeSort extends React.Component {
 				result.push(right.shift());
 			}
 		}
-
 		return result.concat(left).concat(right);
 	}
 
@@ -66,12 +70,19 @@ export class MergeSort extends React.Component {
 					<button onClick={() => this.sort(this.state.a)} >Sort</button>
 				</form>
 
+
 			{ /* Render spans representing array elements */ }
 			{this.state.a.map(function(object, i) {
-
 				return <span key={i} >{object}</span>;
 			})
 			}
+			<div>
+			{this.state.works.map(function(object, i) {
+				return <span style={{width: object.length * 10 + "%"}} key={i} >{object}</span>;
+			})
+			}
+			</div>
+
 			</div>
 		);
 	}
