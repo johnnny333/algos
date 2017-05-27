@@ -43,8 +43,8 @@ export class MergeSort extends React.Component {
 	merge(left, right) {
 		var result = [];
 
-		this.state.works.push(left.concat(right) );
-		this.setState({works: this.state.works });
+		this.state.works.push(left.concat(right));
+		this.setState({ works: this.state.works });
 
 		while (left.length > 0 && right.length > 0) {
 			if (left[0] < right[0]) {
@@ -59,7 +59,7 @@ export class MergeSort extends React.Component {
 	render() {
 
 		let finalArr;
-		if(this.state.finalArr != null){
+		if (this.state.finalArr != null) {
 			finalArr = <div><span className="found" style={{width: 99 + "%"}}>{this.state.finalArr}</span></div>;
 		}
 
@@ -78,6 +78,7 @@ export class MergeSort extends React.Component {
 				return <span key={i} >{object}</span>;
 			})
 			}
+
 
 			<div>
 			{this.state.works.map(function(object, i) {

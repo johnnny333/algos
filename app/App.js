@@ -12,6 +12,7 @@ import { BubbleSort } from "./components/sorting/BubbleSort";
 import { SelectionSort } from "./components/sorting/SelectionSort";
 import { InsertionSort } from "./components/sorting/InsertionSort";
 import { MergeSort } from "./components/sorting/MergeSort";
+import { QuickSort } from "./components/sorting/QuickSort";
 
 import { EuclidianAlgorithm } from "./components/arithmetic_algos/EuclidianAlgorithm";
 import { FizzBuzz } from "./components/arithmetic_algos/FizzBuzz";
@@ -30,6 +31,7 @@ class App extends Component {
 					<Route path='/selection-sort' component={SelectionSort} />
 					<Route path='/insertion-sort' component={InsertionSort} />
 					<Route path='/merge-sort' component={MergeSort} />
+					<Route path='/quick-sort' component={QuickSort} />
 					<Route path='/euclidian-algorithm' component={EuclidianAlgorithm} />
 					<Route path='/fizz-buzz' component={FizzBuzz} />
 					<Route path='/fibonnaci-sequence' component={FibonnaciSequence} />
