@@ -1,5 +1,6 @@
 import React from "react";
 import { shuffle } from "../../helpers/HelperFunctions";
+import { Button } from "react-bootstrap";
 
 export class QuickSort extends React.Component {
 
@@ -52,9 +53,6 @@ export class QuickSort extends React.Component {
 
 			rest = sorted.concat(rest);
 
-			console.log(sorted);
-			console.log(rest);
-
 			for (var i = 1; i < tl; i++) {
 				if (temp[i] < pivot) {
 					left.push(temp[i]);
@@ -73,11 +71,7 @@ export class QuickSort extends React.Component {
 			if(rest.length <= this.state.a.length){
 				this.setState({ stack: stack, pivot: pivot , a: rest });
 			}
-
-			//Put right side array starting from pivot position
-			// Array.prototype.splice.apply(this.state.a, [sorted.length, rest.length].concat(rest));
 		}
-		console.log(sorted);
 		this.setState({ sorted: sorted});
 	}
 
@@ -89,10 +83,10 @@ export class QuickSort extends React.Component {
 		return (
 
 			<div>
-			<button onClick={this.handleChangeShuffle}>Shuffle</button>
 
 				<form onSubmit={e => (e.preventDefault())}>
-					<button onClick={this.quickSort } >QuickSort</button>
+					<Button onClick={this.quickSort } ><i className="fa fa-step-forward"></i></Button>
+					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
 				</form>
 
 			{ /* Render spans representing array elements */ }

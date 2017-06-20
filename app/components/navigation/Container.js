@@ -3,12 +3,14 @@ import { Navbar, NavItem, NavDropdown, Nav } from "react-bootstrap";
 import { IndexLink } from "react-router";
 import { LinkContainer } from "react-router-bootstrap";
 
-export const Container = (props) => <div>	
+export const Container = (props) =>
 
-<Navbar inverse collapseOnSelect>
+	<div >	
+
+<Navbar  collapseOnSelect>
 	<Navbar.Header>
 	<Navbar.Brand>
-		<IndexLink activeClassName='active' to='/'>Home</IndexLink>
+		<IndexLink activeClassName='active' to='/'><i className="fa fa-puzzle-piece"></i> Algos</IndexLink>
 	</Navbar.Brand>
 	<Navbar.Toggle />
 	</Navbar.Header>
@@ -16,7 +18,7 @@ export const Container = (props) => <div>
 	<Navbar.Collapse>
 	<Nav>
 		
-		<NavDropdown eventKey={1} title="Search algos" id="basic-nav-dropdown">
+		<NavDropdown eventKey={1} title="Search Algos" id="basic-nav-dropdown">
 
 			<LinkContainer to="/binary-search">
 				<NavItem eventKey={1.1}>Binary Search</NavItem>
@@ -29,7 +31,7 @@ export const Container = (props) => <div>
 		</NavDropdown>
 
 
-		<NavDropdown eventKey={2} title="Sorting algos" id="basic-nav-dropdown">
+		<NavDropdown eventKey={2} title="Sorting Algos" id="basic-nav-dropdown">
 			
 			<LinkContainer to="/bubble-sort">
 				<NavItem eventKey={2.1}>Bubble Sort</NavItem>
@@ -53,7 +55,7 @@ export const Container = (props) => <div>
 
 		</NavDropdown>
 
-		<NavDropdown eventKey={3} title="Arithmetic algos" id="basic-nav-dropdown">
+		<NavDropdown eventKey={3} title="Arithmetic Algos" id="basic-nav-dropdown">
 
 			<LinkContainer to="/euclidian-algorithm">
 				<NavItem eventKey={3.1}>Euclidian Algorithm</NavItem>
@@ -75,10 +77,18 @@ export const Container = (props) => <div>
 
 	</Nav> 
 
+	<Navbar.Text pullRight>
+          <Navbar.Link href="https://github.com/johnnny333/algos" target="_blank"> <i className="fa fa-github fa-lg"></i> </Navbar.Link>
+        </Navbar.Text>
+
 	</Navbar.Collapse>
 
   </Navbar>
 	
+  	<div className="container">	
+
 	{props.children} 
+
+	</div>
 
 	</div>;

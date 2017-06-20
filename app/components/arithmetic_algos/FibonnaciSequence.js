@@ -1,10 +1,11 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 export class FibonnaciSequence extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { key: 2, n: 2, a: 1, b: 0, numbers: [] };
+		this.state = { key: 10, n: 10, a: 1, b: 0, numbers: [] };
 		this.handleChange = this.handleChange.bind(this);
 		this.fibonnaci = this.fibonnaci.bind(this);
 	}
@@ -23,8 +24,6 @@ export class FibonnaciSequence extends React.Component {
 			this.state.numbers.push(b);
 			this.setState({n: this.state.n -1, a: a, b:b });
 		}				
-		console.log("n: " + n);
-		console.log("key: " + b);
 		return b;
 	}
 
@@ -39,8 +38,8 @@ export class FibonnaciSequence extends React.Component {
 			<div>
 				<input type = "number" value={this.state.key} min="2" max="30" 
 					onChange = { this.handleChange } />
-				<button onClick = { this.fibonnaci } 
-					disabled = {this.state.n == 0 ? true : false }>Fibonnaci </button>
+				<Button onClick = { this.fibonnaci } 
+					disabled = {this.state.n == 0 ? true : false }><i className="fa fa-step-forward"></i></Button>
 
 				<div>	
 				{this.state.numbers.map(function(object, i){

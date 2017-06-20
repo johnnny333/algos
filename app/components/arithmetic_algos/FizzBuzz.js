@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 export class FizzBuzz extends React.Component {
 
@@ -42,10 +43,10 @@ export class FizzBuzz extends React.Component {
 		return (
 
 			<div>
-				<button onClick={this.increment} 
-					disabled = {this.state.i < 20 ? false : true}>FizzBuzz++</button>
-				<button onClick={this.decrement}
-					disabled = {this.state.i == null || this.state.i == 0 ? true: false} > FizzBuzz--</button>
+				<Button onClick={this.increment} 
+					disabled = {this.state.i < 20 ? false : true}>FizzBuzz ++</Button>
+				<Button onClick={this.decrement}
+					disabled = {this.state.i == null || this.state.i == 0 ? true: false} > FizzBuzz --</Button>
 
 				<p> {this.state.i} </p>
 				<p> {this.state.text} </p>

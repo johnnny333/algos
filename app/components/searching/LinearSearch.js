@@ -1,5 +1,6 @@
 import React from "react";
 import {shuffle} from "../../helpers/HelperFunctions";
+import { Button } from "react-bootstrap";
 
 export class LinearSearch extends React.Component {
 
@@ -42,17 +43,18 @@ export class LinearSearch extends React.Component {
 		return (
 			<div>
 
-				{/* This breaks React principle of keeping immutable objects but makes shuffle() algo
-						more efficient */}	
-				<button onClick={this.handleChangeShuffle}>Shuffle</button>
-
 				<form onSubmit={e => (e.preventDefault())}>
 
 					Number to find: 
 					<input type = "number" value={this.state.key} min="0" max={this.state.a.length -1} 
 						onChange = { this.handleChange } />
 					
-					<button onClick={this.indexOf} disabled={disabled}>Find</button>
+					<Button onClick={this.indexOf} disabled={disabled}><i className="fa fa-search"></i></Button>
+
+					{/* This breaks React principle of keeping immutable objects but makes shuffle() algo
+					more efficient */}	
+					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
+
 				</form>
 
 				{/* Render spans representing array elements */}	

@@ -1,9 +1,10 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 export class BinarySearch extends React.Component {
 
 	constructor(props) {
-		let arrLength = 32, initialHint = "Pick a number and click 'find' to find your number.";
+		let arrLength = 30, initialHint = "Pick a number and click 'find' to find your number.";
 
 		super(props);
 		this.state = { key: 0, lo: 0, hi: arrLength, mid: -1, a: Array.from({ length: arrLength }, (val, key) => key)  , 
@@ -23,9 +24,9 @@ export class BinarySearch extends React.Component {
 		if (lo <= hi) {
 			let mid = Math.floor(lo + (hi - lo) / 2);
 			if (key < a[mid]) {hi = mid - 1; 
-				this.setState({hi: hi, hint: "Seeked number is smaller than half of current array [" + lo + "..." + hi + "]"});}
+				this.setState({hi: hi, hint: "Seeked number is smaller than half of the current array [" + lo + "..." + hi + "]"});}
 			else if (key > a[mid]) {lo = mid + 1; 
-				this.setState({lo: lo, hint: "Seeked number is bigger than half of current array [" + lo + "..." + hi + "]"});}
+				this.setState({lo: lo, hint: "Seeked number is bigger than half of the current array [" + lo + "..." + hi + "]"});}
 			else {
 				this.setState({mid: mid, hint: "Your number '" + mid + "' was found!"});
 			}
@@ -38,11 +39,11 @@ export class BinarySearch extends React.Component {
 		return (
 			<div>
 				<form onSubmit={e => (e.preventDefault())}>
-					Number to find: 
+					Number to find:
 					<input type = "number" value={this.state.key} min="0" max={this.state.arrLength - 1} 
 						onChange = { this.handleChange } />
 
-					<button onClick={this.indexOf} disabled={this.state.mid != -1 ? true: false} >Find</button>
+					<Button onClick={this.indexOf} disabled={this.state.mid != -1 ? true: false} ><i className="fa fa-search"></i></Button>
 					<div>{this.state.hint}</div>
 				</form>	
 				

@@ -1,10 +1,11 @@
 import React from "react";
 import {shuffle} from "../../helpers/HelperFunctions";
+import { Button } from "react-bootstrap";
 
 export class BubbleSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 8;
+		let arrLength = 10;
 
 		super(props);
 		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength - 1, swapped: false, changed: false, disabled: false };
@@ -62,10 +63,10 @@ export class BubbleSort extends React.Component {
 		return (
 			<div>
 
-			<button onClick={this.handleChangeShuffle}>Shuffle</button>
-
 				<form onSubmit={e => (e.preventDefault())}>
-					<button onClick={this.sort} disabled={this.state.disabled}>Sort</button>
+					<Button onClick={this.sort} disabled={this.state.disabled}><i className="fa fa-step-forward"></i></Button>
+
+					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
 				</form>
 
 			{ /* Render spans representing array elements */ }

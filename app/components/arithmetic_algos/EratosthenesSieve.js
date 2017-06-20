@@ -1,10 +1,11 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 export class EratosthenesSieve extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { n: 2, isPrime: [], factor: 2, disabled: false };
+		this.state = { n: 21, isPrime: [], factor: 2, disabled: false };
 		this.handleChange = this.handleChange.bind(this);
 		this.sieve = this.sieve.bind(this);
 	}
@@ -67,7 +68,7 @@ export class EratosthenesSieve extends React.Component {
 				<input type = "number" value={this.state.n} min="2" max="300" 
 						onChange = { this.handleChange } />
 
-				<button onClick={this.sieve} disabled={disabled} >Find</button>
+				<Button onClick={this.sieve} disabled={disabled} ><i className="fa fa-step-forward"></i></Button>
 
 			</form>
 
@@ -76,7 +77,7 @@ export class EratosthenesSieve extends React.Component {
 
 				if(object.isPrime) {
 					return <span key={i} className="found">{object.i}</span>;	
-				} else {return <span key={i} >{object.i}</span>}
+				} else {return <span key={i} >{object.i}</span>;}
 			})}
 
 			</div>

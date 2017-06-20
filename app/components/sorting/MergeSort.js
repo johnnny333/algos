@@ -1,5 +1,6 @@
 import React from "react";
 import { shuffle } from "../../helpers/HelperFunctions";
+import { Button } from "react-bootstrap";
 
 export class MergeSort extends React.Component {
 
@@ -66,10 +67,10 @@ export class MergeSort extends React.Component {
 		return (
 
 			<div>
-			<button onClick={this.handleChangeShuffle}>Shuffle</button>
 
 				<form onSubmit={e => (e.preventDefault())}>
-					<button onClick={() => this.sort(this.state.a)} >Sort</button>
+					<Button onClick={() => this.sort(this.state.a)} ><i className="fa fa-play"></i></Button>
+					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
 				</form>
 
 

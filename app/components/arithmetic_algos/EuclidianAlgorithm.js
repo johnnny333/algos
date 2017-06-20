@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 export class EuclidianAlgorithm extends React.Component {
 
@@ -61,7 +62,7 @@ export class EuclidianAlgorithm extends React.Component {
 				<input type = "number" value={this.state.b} min="0" max="65536" 
 					onChange = { this.handleChangeInputB } />
 							
-				<button onClick={this.gcd} disabled={this.state.b == 0 ? true : false} >GCD</button>
+				<Button onClick={this.gcd} disabled={this.state.b == 0 ? true : false} >GCD</Button>
 
 				{this.state.spans.map(function(object, i){
 					if(object.b == 0){return <div key={i}><span>GCD:</span> = <span> {object.a}</span></div>;}
