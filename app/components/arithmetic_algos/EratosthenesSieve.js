@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, PageHeader, Form } from "react-bootstrap";
 
 export class EratosthenesSieve extends React.Component {
 
@@ -63,15 +63,18 @@ export class EratosthenesSieve extends React.Component {
 
 			<div>
 
-			<form onSubmit={e => (e.preventDefault())}>
+			<PageHeader>Eratosthenes Sieve</PageHeader>
+
+			<Form inline onSubmit={e => (e.preventDefault())}>
 
 				<input type = "number" value={this.state.n} min="2" max="300" 
-						onChange = { this.handleChange } />
+						onChange = { this.handleChange } className={"form-control"} />
 
 				<Button onClick={this.sieve} disabled={disabled} ><i className="fa fa-step-forward"></i></Button>
 
-			</form>
+			</Form>
 
+			<hr></hr>
 
 			{this.state.isPrime.map(function(object, i){
 

@@ -66,11 +66,11 @@ export const Container = (props) =>
 			</LinkContainer>
 
 			<LinkContainer to="/fibonnaci-sequence">
-				<NavItem eventKey={3.2}>FibonnaciSequence</NavItem>
+				<NavItem eventKey={3.2}>Fibonnaci Sequence</NavItem>
 			</LinkContainer>
 
 			<LinkContainer to="/eratosthenes-sieve">
-				<NavItem eventKey={3.2}>EratosthenesSieve</NavItem>
+				<NavItem eventKey={3.2}>Eratosthenes Sieve</NavItem>
 			</LinkContainer>
 
 		</NavDropdown>

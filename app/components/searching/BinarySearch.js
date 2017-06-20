@@ -1,10 +1,10 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, PageHeader, Form } from "react-bootstrap";
 
 export class BinarySearch extends React.Component {
 
 	constructor(props) {
-		let arrLength = 30, initialHint = "Pick a number and click 'find' to find your number.";
+		let arrLength = 30, initialHint = "Pick a number and click magnifying glass to find your number.";
 
 		super(props);
 		this.state = { key: 0, lo: 0, hi: arrLength, mid: -1, a: Array.from({ length: arrLength }, (val, key) => key)  , 
@@ -38,15 +38,22 @@ export class BinarySearch extends React.Component {
 
 		return (
 			<div>
-				<form onSubmit={e => (e.preventDefault())}>
-					Number to find:
+
+				<PageHeader>Binary Search<br></br>
+					<small>{this.state.hint}</small>
+				</PageHeader>
+
+				<Form inline onSubmit={e => (e.preventDefault())}>
+					<span>Number to find: </span>
 					<input type = "number" value={this.state.key} min="0" max={this.state.arrLength - 1} 
-						onChange = { this.handleChange } />
+						onChange = { this.handleChange } className={"form-control"} />
 
 					<Button onClick={this.indexOf} disabled={this.state.mid != -1 ? true: false} ><i className="fa fa-search"></i></Button>
-					<div>{this.state.hint}</div>
-				</form>	
+					
+				</Form>	
 				
+				<hr></hr>
+
 				{/* Render spans representing array elements */}	
 				{this.state.a.map(function(object, i){
 

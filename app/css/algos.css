@@ -19,3 +19,11 @@ div > span.found {
 div > span.selected{
 	background-color: grey;
 }
+
+.navbar {
+	margin-bottom: 0;
+}
+
+div#fizz-buzz-well {
+	height: 170px;
+}

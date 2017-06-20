@@ -1,6 +1,6 @@
 import React from "react";
 import { shuffle } from "../../helpers/HelperFunctions";
-import { Button } from "react-bootstrap";
+import { Button, PageHeader } from "react-bootstrap";
 
 export class InsertionSort extends React.Component {
 
@@ -53,10 +53,15 @@ export class InsertionSort extends React.Component {
 
 			<div>
 
+			<PageHeader>Insertion Sort</PageHeader>
+
+
 				<form onSubmit={e => (e.preventDefault())}>
 					<Button onClick={this.sort} disabled={disabled} ><i className="fa fa-step-forward"></i></Button>
 					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
 				</form>
+
+			<hr></hr>
 
 			{ /* Render spans representing array elements */ }
 			{this.state.a.map(function(object, i) {

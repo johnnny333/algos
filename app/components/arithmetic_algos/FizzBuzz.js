@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, PageHeader, Well } from "react-bootstrap";
 
 export class FizzBuzz extends React.Component {
 
@@ -43,15 +43,21 @@ export class FizzBuzz extends React.Component {
 		return (
 
 			<div>
+
+				<PageHeader>FizzBuzz</PageHeader>
+
 				<Button onClick={this.increment} 
-					disabled = {this.state.i < 20 ? false : true}>FizzBuzz ++</Button>
+					disabled = {this.state.i < 20 ? false : true}><i className="fa fa-plus"></i></Button>
 				<Button onClick={this.decrement}
-					disabled = {this.state.i == null || this.state.i == 0 ? true: false} > FizzBuzz --</Button>
+					disabled = {this.state.i == null || this.state.i == 0 ? true: false}><i className="fa fa-minus"></i></Button>
 
-				<p> {this.state.i} </p>
-				<p> {this.state.text} </p>
+				<hr></hr>
+
+				<Well id={"fizz-buzz-well"} style={{display: this.state.i != null ? "block" : "none" }} >
+					<h3> {this.state.i} </h3>
+					<h2 className={this.state.text === "FizzBuzz" ? "text-success": "text-primary"}> {this.state.text} </h2>
+				</Well>
 			</div>	
-
 		);
 	}
 }

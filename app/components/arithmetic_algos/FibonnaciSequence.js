@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, PageHeader, Form } from "react-bootstrap";
 
 export class FibonnaciSequence extends React.Component {
 
@@ -36,10 +36,19 @@ export class FibonnaciSequence extends React.Component {
 		return (
 
 			<div>
+
+				<PageHeader>Fibonnaci Sequence <br></br><small>Press <i className="fa fa-step-forward"></i> ...</small></PageHeader>
+
+				<Form inline onSubmit={e => (e.preventDefault())}>
+
 				<input type = "number" value={this.state.key} min="2" max="30" 
-					onChange = { this.handleChange } />
+					onChange = { this.handleChange } className={"form-control"} />
 				<Button onClick = { this.fibonnaci } 
 					disabled = {this.state.n == 0 ? true : false }><i className="fa fa-step-forward"></i></Button>
+
+				</Form>
+				
+				<hr></hr>	
 
 				<div>	
 				{this.state.numbers.map(function(object, i){

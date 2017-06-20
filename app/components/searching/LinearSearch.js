@@ -1,6 +1,6 @@
 import React from "react";
 import {shuffle} from "../../helpers/HelperFunctions";
-import { Button } from "react-bootstrap";
+import { Button, PageHeader, Form } from "react-bootstrap";
 
 export class LinearSearch extends React.Component {
 
@@ -43,11 +43,13 @@ export class LinearSearch extends React.Component {
 		return (
 			<div>
 
-				<form onSubmit={e => (e.preventDefault())}>
+				<PageHeader>Linear Search</PageHeader>
 
-					Number to find: 
+				<Form inline onSubmit={e => (e.preventDefault())}>
+
+					<span>Number to find: </span>
 					<input type = "number" value={this.state.key} min="0" max={this.state.a.length -1} 
-						onChange = { this.handleChange } />
+						onChange = { this.handleChange } className={"form-control"} />
 					
 					<Button onClick={this.indexOf} disabled={disabled}><i className="fa fa-search"></i></Button>
 
@@ -55,7 +57,9 @@ export class LinearSearch extends React.Component {
 					more efficient */}	
 					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
 
-				</form>
+				</Form>
+
+				<hr></hr>
 
 				{/* Render spans representing array elements */}	
 				{this.state.a.map(function(object, i){

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, PageHeader, Form, Well } from "react-bootstrap";
 
 export class EuclidianAlgorithm extends React.Component {
 
@@ -53,22 +53,32 @@ export class EuclidianAlgorithm extends React.Component {
 		return (
 			<div> 
 
-			<form onSubmit={e => (e.preventDefault())}>
-				First number:
-				<input type = "number" value={this.state.a} min="0" max="65536"
-					onChange = { this.handleChangeInputA } />
+			<PageHeader>Euclidian Algorithm</PageHeader>
 
-				Second number: 
+			<Form inline onSubmit={e => (e.preventDefault())}>
+				<span>First number: </span>
+				<input type = "number" value={this.state.a} min="0" max="65536"
+					onChange = { this.handleChangeInputA } className={"form-control"} />
+
+				<span> Second number: </span> 
 				<input type = "number" value={this.state.b} min="0" max="65536" 
-					onChange = { this.handleChangeInputB } />
+					onChange = { this.handleChangeInputB } className={"form-control"} />
 							
-				<Button onClick={this.gcd} disabled={this.state.b == 0 ? true : false} >GCD</Button>
+				<Button onClick={this.gcd} disabled={this.state.b == 0 ? true : false} ><i className="fa fa-calculator"></i> GCD</Button>
+
+				</Form>
+
+				<hr></hr>
+
+				<Well className={"text-center"} style={{display: this.state.spans[0] != null ? "block" : "none" }}>
 
 				{this.state.spans.map(function(object, i){
 					if(object.b == 0){return <div key={i}><span>GCD:</span> = <span> {object.a}</span></div>;}
 					return <div key={i}><span >{object.a}</span> mod <span >{object.b}</span> = <span >{object.r}</span></div>;
 				})}
-			</form>
+
+				</Well>
+
 		</div>
 		);
 	}
