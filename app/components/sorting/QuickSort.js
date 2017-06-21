@@ -78,7 +78,8 @@ export class QuickSort extends React.Component {
 	render() {
 
 		let pivot = this.state.pivot,
-			sortedLenght = this.state.sorted.length;
+			sortedLenght = this.state.sorted.length,
+			disabled = this.state.sorted.length == this.state.a.length ? true: false; 
 
 		return (
 
@@ -87,7 +88,7 @@ export class QuickSort extends React.Component {
 				<PageHeader>Quick Sort</PageHeader>
 
 				<form onSubmit={e => (e.preventDefault())}>
-					<Button onClick={this.quickSort } ><i className="fa fa-step-forward"></i></Button>
+					<Button onClick={this.quickSort } disabled={disabled} ><i className="fa fa-step-forward"></i></Button>
 					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
 				</form>
 
