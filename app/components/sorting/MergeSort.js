@@ -71,7 +71,7 @@ export class MergeSort extends React.Component {
 			<PageHeader>Merge Sort</PageHeader>
 
 				<form onSubmit={e => (e.preventDefault())}>
-					<Button onClick={() => this.sort(this.state.a)} ><i className="fa fa-play"></i></Button>
+					<Button onClick={() => this.sort(this.state.a)} disabled={this.state.finalArr != null ? true : false } ><i className="fa fa-play"></i></Button>
 					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
 				</form>
 
