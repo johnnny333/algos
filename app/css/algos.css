@@ -13,6 +13,7 @@ div > span {
   border: 2px transparent solid;
   font-size: large; 
   color: white;
+  transition: background-color 0.3s;
 }
 
 div > span.found {
@@ -35,12 +36,48 @@ div#fizz-buzz-well {
   font-weight: bolder;
 }
 
+/* Color of NavBar */
+.dropdown-menu,
 .navbar-default {
   background-color: #E91E63;
 }
 
+/* Color of menu hover */
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover,
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover,
+.dropdown-menu>.active>a:hover {
+  color: white;
+  background-color:#C2185B; 
+}
+
+.dropdown-menu>.active>a {
+  background-color: #880E4F; 
+}
+
+/* Colors of text on navbar */
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav>li>a,
-div.navbar-collapse.collapse > p > a {
+div.navbar-collapse.collapse > p > a,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: white;
+}
+
+/* Color of hamburger menu (toggle) */
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
+}
+
+/* Keep form elements inline when width <= 768 px */
+.form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+
+/* Fixed height for page-header to eliminate page "jumping"
+  when content inside changes */
+@media screen and (max-width: 768px) {
+    .page-header {
+      height: 130px;
+  }
 }
