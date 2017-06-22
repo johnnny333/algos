@@ -5,8 +5,12 @@ import { Button, PageHeader, Form } from "react-bootstrap";
 export class LinearSearch extends React.Component {
 
 	constructor(props) {
+
+		let initialHint = "Pick a number and click magnifying glass to find it in a array.";
+
 		super(props);
-		this.state = {key: 0, a: shuffle( Array.from({ length: 20 }, (val, key) => key) ), i: -1, found: null };
+		this.state = {key: 0, a: shuffle( Array.from({ length: 20 }, (val, key) => key) ), i: -1, 
+			found: null, initialHint: initialHint, hint: initialHint };
 		this.indexOf = this.indexOf.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
@@ -23,15 +27,15 @@ export class LinearSearch extends React.Component {
 	}
 
 	clear(key){
-		this.setState({key: key,i: -1, found: null});
+		this.setState({key: key,i: -1, found: null, hint: this.state.initialHint});
 	}
 
 	indexOf() {
 
 		if(this.state.a[this.state.i] == this.state.key){
-			this.setState({found: this.state.i});
+			this.setState({found: this.state.i , hint: `Indeed! There is a '${this.state.key}'  at 'arr[${this.state.i}]'!`});
 		}else {
-			this.setState({i: this.state.i + 1});
+			this.setState({i: this.state.i + 1, hint: `Is there '${this.state.key}'  at arr[${this.state.i + 1}] ?` });
 		}
 	}
 
@@ -43,7 +47,9 @@ export class LinearSearch extends React.Component {
 		return (
 			<div>
 
-				<PageHeader>Linear Search</PageHeader>
+				<PageHeader>Linear Search<br></br>
+					<small>{this.state.hint}</small>
+				</PageHeader>
 
 				<Form inline onSubmit={e => (e.preventDefault())}>
 

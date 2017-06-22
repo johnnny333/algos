@@ -4,7 +4,7 @@ import { Button, PageHeader, Form } from "react-bootstrap";
 export class BinarySearch extends React.Component {
 
 	constructor(props) {
-		let arrLength = 30, initialHint = "Pick a number and click magnifying glass to find your number.";
+		let arrLength = 30, initialHint = "Pick a number and click magnifying glass to find it in a array.";
 
 		super(props);
 		this.state = { key: 0, lo: 0, hi: arrLength, mid: -1, a: Array.from({ length: arrLength }, (val, key) => key)  , 
@@ -24,9 +24,9 @@ export class BinarySearch extends React.Component {
 		if (lo <= hi) {
 			let mid = Math.floor(lo + (hi - lo) / 2);
 			if (key < a[mid]) {hi = mid - 1; 
-				this.setState({hi: hi, hint: "Seeked number is smaller than half of the current array [" + lo + "..." + hi + "]"});}
+				this.setState({hi: hi, hint: "Seeked number is smaller than half of the current array [" + lo + "..." + hi + "]."});}
 			else if (key > a[mid]) {lo = mid + 1; 
-				this.setState({lo: lo, hint: "Seeked number is bigger than half of the current array [" + lo + "..." + hi + "]"});}
+				this.setState({lo: lo, hint: "Seeked number is bigger than half of the current array [" + lo + "..." + hi + "]."});}
 			else {
 				this.setState({mid: mid, hint: "Your number '" + mid + "' was found!"});
 			}
