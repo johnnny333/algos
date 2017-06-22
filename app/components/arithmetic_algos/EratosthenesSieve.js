@@ -5,7 +5,7 @@ export class EratosthenesSieve extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { n: 21, isPrime: [], factor: 2, disabled: false };
+		this.state = { n: 51, isPrime: [], factor: 2, disabled: false };
 		this.handleChange = this.handleChange.bind(this);
 		this.sieve = this.sieve.bind(this);
 	}

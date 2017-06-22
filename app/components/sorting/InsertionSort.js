@@ -5,7 +5,7 @@ import { Button, PageHeader } from "react-bootstrap";
 export class InsertionSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 8;
+		let arrLength = 10;
 
 		super(props);
 		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), 

@@ -10,10 +10,11 @@ div > span {
 	padding: 3.5% 0px;
 	border-radius: 5px;
 	background-color: rgba(128, 128, 128, 0.58);
+	font-weight: bold;
 }
 
 div > span.found {
-	background-color: yellow;
+	background-color: #FFEB3B;
 }
 
 div > span.selected{
