@@ -8,30 +8,36 @@ export class BubbleSort extends React.Component {
 		let arrLength = 10;
 
 		super(props);
-		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: arrLength - 1, swapped: false, changed: false, disabled: false };
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), 
+			i: null, swapped: false, changed: false, disabled: false };
 		this.sort = this.sort.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 	}
 
 	handleChangeShuffle(){
 		this.setState({a: shuffle(this.state.a)});
-		this.setState({ i: this.state.a.length - 1, swapped: false, changed: false, disabled: false });
+		this.setState({ i: null , swapped: false, changed: false, disabled: false });
 	}
 
 	sort() {
 
-		let myTable = this.state.a;
+		let myTable = this.state.a, i = this.state.i;
 
+		if (i == null) {
+			i = this.state.a.length ;
+		}
+
+		//Reset previously set 'swapped' flag to false
 		if (this.state.swapped) {
 			this.setState({ swapped: false });
 			return;
 		}
 
-		if (myTable[this.state.i] < myTable[this.state.i - 1]) {
+		if (myTable[i] < myTable[i - 1]) {
 
 			let temp = myTable[this.state.i - 1];
-			myTable[this.state.i - 1] = myTable[this.state.i];
-			myTable[this.state.i] = temp;
+			myTable[i - 1] = myTable[i];
+			myTable[i] = temp;
 			this.setState({ swapped: true, changed: true });
 
 			return;
@@ -41,7 +47,7 @@ export class BubbleSort extends React.Component {
 		 * Check if the end of array was reached, and if, 
 		 * reset the value of i to the start(end of array) and return.
 		 */
-		if (this.state.i == 1) {
+		if (i == 1) {
 
 			if (!this.state.changed) {
 				this.setState({disabled: true});
@@ -52,7 +58,7 @@ export class BubbleSort extends React.Component {
 			return;
 		}
 
-		this.setState({ i: this.state.i - 1, a: myTable });
+		this.setState({ i: i - 1, a: myTable });
 	}
 
 	render() {
