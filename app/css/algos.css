@@ -1,30 +1,46 @@
 .active {
-    color: #53acff;
-}
+  color: #53acff; }
 
 div > span {
-	display: inline-block;
-	width: 9%;
-	margin: 0.5%;
-	text-align: center;
-	padding: 3.5% 0px;
-	border-radius: 5px;
-	background-color: rgba(128, 128, 128, 0.58);
-	font-weight: bold;
+  display: inline-block;
+  width: 9%;
+  margin: 0.5%;
+  text-align: center;
+  padding: 3.5% 0px;
+  border-radius: 5px;
+  background-color: rgba(128, 128, 128, 0.58);
+  font-weight: bold;
+  border: 2px transparent solid;
+  font-size: large; 
+  color: white;
 }
 
 div > span.found {
-	background-color: #FFEB3B;
+  background-color: #FFEB3B; 
+  border: 2px orange solid;
+  color: orange; 
 }
 
-div > span.selected{
-	background-color: grey;
-}
+div > span.selected {
+  background-color: #E91E63; }
 
 .navbar {
-	margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
 div#fizz-buzz-well {
-	height: 170px;
+  height: 170px; 
+}
+
+.well {
+  font-weight: bolder;
+}
+
+.navbar-default {
+  background-color: #E91E63;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav>li>a,
+div.navbar-collapse.collapse > p > a {
+    color: white;
 }
