@@ -5,7 +5,7 @@ export class EuclidianAlgorithm extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { a: 1112, b: 695, spans: [] };
+		this.state = { inputA: 1112, inputB: 695, a: 1112, b: 695, spans: [], formValues: {} };
 		this.handleChangeInputA = this.handleChangeInputA.bind(this);
 		this.handleChangeInputB = this.handleChangeInputB.bind(this);
 		this.gcd = this.gcd.bind(this);
@@ -13,12 +13,13 @@ export class EuclidianAlgorithm extends React.Component {
 	}
 
 	handleChangeInputA(event) {
-		this.setState({ a: event.target.value });
+
+		this.setState({ inputA: event.target.value, a: event.target.value, b: this.state.inputB });
 		this.clean();
 	}
 
 	handleChangeInputB(event) {
-		this.setState({ b: event.target.value });
+		this.setState({ inputB: event.target.value, b: event.target.value, a: this.state.inputA });
 		this.clean();
 	}
 
@@ -57,11 +58,11 @@ export class EuclidianAlgorithm extends React.Component {
 
 			<Form inline onSubmit={e => (e.preventDefault())}>
 				<span>First number: </span>
-				<input type = "number" value={this.state.a} min="0" max="65536"
+				<input type = "number" name="inputA" value={this.state.inputA} min="0" max="65536"
 					onChange = { this.handleChangeInputA } className={"form-control"} />
 
 				<span> Second number: </span> 
-				<input type = "number" value={this.state.b} min="0" max="65536" 
+				<input type = "number" name="inputB" value={this.state.inputB} min="0" max="65536" 
 					onChange = { this.handleChangeInputB } className={"form-control"} />
 							
 				<Button onClick={this.gcd} disabled={this.state.b == 0 ? true : false} ><i className="fa fa-calculator"></i> GCD</Button>
