@@ -5,18 +5,19 @@ import { Button, PageHeader } from "react-bootstrap";
 export class BubbleSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 10;
+		let arrLength = 8, initialHint = "Bubble Sort works by comparing two, adjacent array elements (arr[n] < arr[n - 1]).";
 
 		super(props);
 		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), 
-			i: null, swapped: false, changed: false, disabled: false };
+			i: null, swapped: false, changed: false, disabled: false, 
+			initialHint:initialHint, hint: initialHint, arrLength: arrLength };
 		this.sort = this.sort.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 	}
 
 	handleChangeShuffle(){
 		this.setState({a: shuffle(this.state.a)});
-		this.setState({ i: null , swapped: false, changed: false, disabled: false });
+		this.setState({ i: null , swapped: false, changed: false, disabled: false, hint: this.state.initialHint });
 	}
 
 	sort() {
@@ -27,10 +28,11 @@ export class BubbleSort extends React.Component {
 			i = this.state.a.length ;
 		}
 
+		this.setState({hint: `Is ${myTable[i - 1]} < than ${myTable[i - 2]}?`});
+
 		//Reset previously set 'swapped' flag to false
 		if (this.state.swapped) {
-			this.setState({ swapped: false });
-			return;
+			this.setState({ swapped: false});
 		}
 
 		if (myTable[i] < myTable[i - 1]) {
@@ -38,7 +40,8 @@ export class BubbleSort extends React.Component {
 			let temp = myTable[this.state.i - 1];
 			myTable[i - 1] = myTable[i];
 			myTable[i] = temp;
-			this.setState({ swapped: true, changed: true });
+			this.setState({ swapped: true, changed: true, hint: `Yes, ${myTable[i - 1]} is < than ${myTable[i]}, 
+				so we swap those numbers.` });
 
 			return;
 		}
@@ -50,10 +53,11 @@ export class BubbleSort extends React.Component {
 		if (i == 1) {
 
 			if (!this.state.changed) {
-				this.setState({disabled: true});
+				this.setState({disabled: true, hint: `Our array is sorted!`});
 				return;
 			} else {
-				this.setState({ i: this.state.a.length - 1, changed: false });
+				this.setState({ i: this.state.a.length - 1, changed: false, hint: `We've reached the end of array but havent't fully sorted it
+					so we keep on asking: Is ${myTable[this.state.a.length - 1]} < than ${myTable[this.state.a.length - 2]}?` });
 			}
 			return;
 		}
@@ -69,7 +73,9 @@ export class BubbleSort extends React.Component {
 		return (
 			<div>
 
-				<PageHeader>Bubble Sort</PageHeader>
+				<PageHeader>Bubble Sort<br></br>
+					<small>{this.state.hint}</small>
+				</PageHeader>
 
 
 				<form onSubmit={e => (e.preventDefault())}>

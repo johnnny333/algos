@@ -36,6 +36,10 @@ div#fizz-buzz-well {
   font-weight: bolder;
 }
 
+.page-header {
+    overflow: auto;
+}
+
 /* Color of NavBar */
 .dropdown-menu,
 .navbar-default {

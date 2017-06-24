@@ -33,9 +33,9 @@ export class LinearSearch extends React.Component {
 	indexOf() {
 
 		if(this.state.a[this.state.i] == this.state.key){
-			this.setState({found: this.state.i , hint: `Indeed! There is a '${this.state.key}'  at 'arr[${this.state.i}]'!`});
+			this.setState({found: this.state.i , hint: `Indeed! There is a '${this.state.key}'  at 'array[${this.state.i}]'!`});
 		}else {
-			this.setState({i: this.state.i + 1, hint: `Is there '${this.state.key}'  at arr[${this.state.i + 1}] ?` });
+			this.setState({i: this.state.i + 1, hint: `Is there '${this.state.key}'  at array[${this.state.i + 1}] ?` });
 		}
 	}
 

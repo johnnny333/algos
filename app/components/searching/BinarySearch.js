@@ -24,9 +24,9 @@ export class BinarySearch extends React.Component {
 		if (lo <= hi) {
 			let mid = Math.floor(lo + (hi - lo) / 2);
 			if (key < a[mid]) {hi = mid - 1; 
-				this.setState({hi: hi, hint: "Seeked number is smaller than half of the current array [" + lo + "..." + hi + "]."});}
+				this.setState({hi: hi, hint: "Seeked number is smaller than half of the current array[" + lo + "..." + hi + "]."});}
 			else if (key > a[mid]) {lo = mid + 1; 
-				this.setState({lo: lo, hint: "Seeked number is bigger than half of the current array [" + lo + "..." + hi + "]."});}
+				this.setState({lo: lo, hint: "Seeked number is bigger than half of the current array[" + lo + "..." + hi + "]."});}
 			else {
 				this.setState({mid: mid, hint: "Your number '" + mid + "' was found!"});
 			}
