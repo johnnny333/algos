@@ -5,10 +5,12 @@ import { Button, PageHeader } from "react-bootstrap";
 export class SelectionSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 10;
+		let arrLength = 10, initialHint = "Selection Sort works by using Linear Search to find " + 
+			" the smallest value in an array and then placing it in the leftmost position.";
 
 		super(props);
-		this.state = {a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: 0, minIndex: null };
+		this.state = {a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), i: 0, minIndex: null,
+			hint: initialHint, initialHint:initialHint };
 		this.sort = this.sort.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 	}
@@ -21,8 +23,9 @@ export class SelectionSort extends React.Component {
 
 		var min, minIndex = this.state.minIndex, temp, myTable = this.state.a, i = this.state.i;
 
-
+		//Iterator
 		if (minIndex != null && minIndex < myTable.length) {
+			//Swap
 			temp = myTable[i];
 			myTable[i] = myTable[minIndex];
 			myTable[minIndex] = temp;
@@ -33,14 +36,21 @@ export class SelectionSort extends React.Component {
 
 		min = myTable[i], minIndex = i;
 
+		//Find the smallest value
 		for (var j = i; j < myTable.length; j++) {
 			if (myTable[j] < min) {
 				min = myTable[j];
 				minIndex = j;
 			}
 		}
-		this.setState({ minIndex: minIndex });
-		return;
+
+		if(minIndex == this.state.a.length){
+			this.setState({ minIndex: minIndex, hint: "Array is sorted!" });
+		} else {
+			this.setState({ minIndex: minIndex, hint: `The smallest, unsorted value is '${min}' so we place it in the leftmost position.` });
+			return;
+		}
+		
 	}
 
 	render() {
@@ -51,7 +61,9 @@ export class SelectionSort extends React.Component {
 		return (
 			<div>
 
-				<PageHeader>Selection Sort</PageHeader>
+				<PageHeader>Selection Sort<br></br>
+					<small>{this.state.hint}</small>
+				</PageHeader>
 
 
 				<form onSubmit={e => (e.preventDefault())}>

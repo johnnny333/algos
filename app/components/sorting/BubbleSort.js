@@ -62,8 +62,6 @@ export class BubbleSort extends React.Component {
 			}
 			return;
 		}
-
-		console.log("this.state.bubbleIteration " + this.state.bubbleIteration);
 		this.setState({ i: i - 1, a: myTable });
 	}
 
@@ -72,8 +70,6 @@ export class BubbleSort extends React.Component {
 		let currentI = this.state.i,
 			highlighting = this.state.swapped ? "found" : "selected",
 			bubbleIteration = this.state.bubbleIteration - 1;
-
-			console.log("bubbleIteration: " + bubbleIteration);
 
 		return (
 			<div>
@@ -97,7 +93,6 @@ export class BubbleSort extends React.Component {
 				if(i == currentI){return <span className={highlighting} key={i}>{object}</span>;}
 				if(i == currentI - 1){return <span className={highlighting} key={i}>{object}</span>;}
 				if(i < bubbleIteration){return <span className={"sorted"} key={i}>{object}</span>;}
-
 
 				return <span key={i} >{object}</span>;
 			})
