@@ -65,7 +65,7 @@ export class SelectionSort extends React.Component {
 			{ /* Render spans representing array elements */ }
 			{this.state.a.map(function(object, i) {
 				if(i == minIndex){return <span className="found" key={i}>{object}</span>;}
-				if(i < currentIter){return <span className="selected" key={i}>{object}</span>;}
+				if(i < currentIter){return <span className="sorted" key={i}>{object}</span>;}
 				
 				return <span key={i} >{object}</span>;
 			})

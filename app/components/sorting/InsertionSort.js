@@ -24,7 +24,7 @@ export class InsertionSort extends React.Component {
 		let currentKey = this.state.currentKey, j = this.state.j, 
 			sortedArray = this.state.a, i = this.state.i + 1;
 
-		//Insert currently selected, presorted element at right position.
+		//Insert currently sorted, presorted element at right position.
 		if (j > 0 && sortedArray[j - 1] > currentKey) {
 
 			sortedArray[j] = sortedArray[j - 1];
@@ -67,7 +67,7 @@ export class InsertionSort extends React.Component {
 			{this.state.a.map(function(object, i) {
 
 				if(i == j){return <span className="found" key={i}>{object}</span>;}
-				if(i < currentIter){return <span className="selected" key={i}>{object}</span>;}
+				if(i < currentIter){return <span className="sorted" key={i}>{object}</span>;}
 
 				return <span key={i} >{object}</span>;
 			})

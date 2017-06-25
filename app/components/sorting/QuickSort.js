@@ -97,7 +97,7 @@ export class QuickSort extends React.Component {
 			{ /* Render spans representing array elements */ }
 			{this.state.a.map(function(object, i) {
 
-				if(i < sortedLenght){return <span className="selected" key={i}>{object}</span>;}
+				if(i < sortedLenght){return <span className="sorted" key={i}>{object}</span>;}
 				if(i == pivot){return <span className="found" key={i}>{object}</span>;}
 
 				return <span key={i} >{object}</span>;

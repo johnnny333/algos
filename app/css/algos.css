@@ -22,11 +22,17 @@ div > span.found {
   color: orange; 
 }
 
+div > span.sorted {
+  background-color: #E91E63; 
+}
+
 div > span.selected {
-  background-color: #E91E63; }
+  background-color: #607d8b; 
+}
 
 .navbar {
-  margin-bottom: 0; }
+  margin-bottom: 0; 
+}
 
 div#fizz-buzz-well {
   height: 170px; 

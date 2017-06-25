@@ -52,7 +52,7 @@ export class BubbleSort extends React.Component {
 		 */
 		if (i === this.state.bubbleIteration) {
 
-			if (!this.state.changed) {
+			if (!this.state.changed || i == myTable.length -1) {
 				this.setState({disabled: true, hint: `Our array is sorted!`});
 				return;
 			} else {
@@ -63,7 +63,7 @@ export class BubbleSort extends React.Component {
 			return;
 		}
 
-		console.log("this.state.iteration " + this.state.bubbleIteration);
+		console.log("this.state.bubbleIteration " + this.state.bubbleIteration);
 		this.setState({ i: i - 1, a: myTable });
 	}
 
@@ -96,7 +96,7 @@ export class BubbleSort extends React.Component {
 
 				if(i == currentI){return <span className={highlighting} key={i}>{object}</span>;}
 				if(i == currentI - 1){return <span className={highlighting} key={i}>{object}</span>;}
-				if(i < bubbleIteration){return <span className={"selected"} key={i}>{object}</span>;}
+				if(i < bubbleIteration){return <span className={"sorted"} key={i}>{object}</span>;}
 
 
 				return <span key={i} >{object}</span>;

@@ -58,7 +58,7 @@ export class BinarySearch extends React.Component {
 				{this.state.a.map(function(object, i){
 
 					if(i == mid){return <span className="found" key={i}>{object}</span>;}
-					if(i >= lo && i <= hi){return <span key={i} className="selected" >{object}</span>;}
+					if(i >= lo && i <= hi){return <span key={i} className="sorted" >{object}</span>;}
 					return <span key={i} >{object}</span>;
 				})}
 			</div>
