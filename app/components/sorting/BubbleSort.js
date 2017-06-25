@@ -9,15 +9,15 @@ export class BubbleSort extends React.Component {
 
 		super(props);
 		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), 
-			i: null, swapped: false, changed: false, disabled: false, 
-			initialHint:initialHint, hint: initialHint, arrLength: arrLength };
+			i: null, swapped: false, changed: false, disabled: false, initialHint:initialHint, 
+			hint: initialHint, arrLength: arrLength, bubbleIteration: 1 };
 		this.sort = this.sort.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 	}
 
 	handleChangeShuffle(){
-		this.setState({a: shuffle(this.state.a)});
-		this.setState({ i: null , swapped: false, changed: false, disabled: false, hint: this.state.initialHint });
+		this.setState({a: shuffle(this.state.a), i: null , swapped: false, changed: false, disabled: false, hint: this.state.initialHint,
+			bubbleIteration: 1 });
 	}
 
 	sort() {
@@ -50,25 +50,30 @@ export class BubbleSort extends React.Component {
 		 * Check if the end of array was reached, and if, 
 		 * reset the value of i to the start(end of array) and return.
 		 */
-		if (i == 1) {
+		if (i === this.state.bubbleIteration) {
 
 			if (!this.state.changed) {
 				this.setState({disabled: true, hint: `Our array is sorted!`});
 				return;
 			} else {
 				this.setState({ i: this.state.a.length - 1, changed: false, hint: `We've reached the end of array but havent't fully sorted it,
-					so we start over and keep on asking: Is ${myTable[this.state.a.length - 1]} < than ${myTable[this.state.a.length - 2]}?` });
+					so we start over and keep on asking: Is ${myTable[this.state.a.length - 1]} < than ${myTable[this.state.a.length - 2]}?`,
+					bubbleIteration: this.state.bubbleIteration + 1 });
 			}
 			return;
 		}
 
+		console.log("this.state.iteration " + this.state.bubbleIteration);
 		this.setState({ i: i - 1, a: myTable });
 	}
 
 	render() {
 
 		let currentI = this.state.i,
-			highlighting = this.state.swapped ? "found" : "selected";
+			highlighting = this.state.swapped ? "found" : "selected",
+			bubbleIteration = this.state.bubbleIteration - 1;
+
+			console.log("bubbleIteration: " + bubbleIteration);
 
 		return (
 			<div>
@@ -91,6 +96,8 @@ export class BubbleSort extends React.Component {
 
 				if(i == currentI){return <span className={highlighting} key={i}>{object}</span>;}
 				if(i == currentI - 1){return <span className={highlighting} key={i}>{object}</span>;}
+				if(i < bubbleIteration){return <span className={"selected"} key={i}>{object}</span>;}
+
 
 				return <span key={i} >{object}</span>;
 			})
