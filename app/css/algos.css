@@ -36,10 +36,6 @@ div#fizz-buzz-well {
   font-weight: bolder;
 }
 
-.page-header {
-    overflow: auto;
-}
-
 /* Color of NavBar */
 .dropdown-menu,
 .navbar-default {
@@ -78,10 +74,16 @@ div.navbar-collapse.collapse > p > a,
   vertical-align: middle;
 }
 
+.page-header {
+      height: 130px;
+      }
+
 /* Fixed height for page-header to eliminate page "jumping"
   when content inside changes */
 @media screen and (max-width: 768px) {
     .page-header {
-      height: 130px;
+      height: 150px;
+      overflow: auto;
+      margin: 20px 0px;
   }
 }

@@ -5,7 +5,7 @@ import { Button, PageHeader } from "react-bootstrap";
 export class BubbleSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 8, initialHint = "Bubble Sort works by comparing two, adjacent array elements (arr[n] < arr[n - 1]).";
+		let arrLength = 10, initialHint = "Bubble Sort works by comparing two, adjacent array elements (arr[n] < arr[n - 1]).";
 
 		super(props);
 		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), 
@@ -56,8 +56,8 @@ export class BubbleSort extends React.Component {
 				this.setState({disabled: true, hint: `Our array is sorted!`});
 				return;
 			} else {
-				this.setState({ i: this.state.a.length - 1, changed: false, hint: `We've reached the end of array but havent't fully sorted it
-					so we keep on asking: Is ${myTable[this.state.a.length - 1]} < than ${myTable[this.state.a.length - 2]}?` });
+				this.setState({ i: this.state.a.length - 1, changed: false, hint: `We've reached the end of array but havent't fully sorted it,
+					so we start over and keep on asking: Is ${myTable[this.state.a.length - 1]} < than ${myTable[this.state.a.length - 2]}?` });
 			}
 			return;
 		}
