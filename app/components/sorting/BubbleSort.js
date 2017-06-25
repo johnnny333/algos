@@ -53,7 +53,7 @@ export class BubbleSort extends React.Component {
 		if (i === this.state.bubbleIteration) {
 
 			if (!this.state.changed || i == myTable.length -1) {
-				this.setState({disabled: true, hint: `Our array is sorted!`});
+				this.setState({disabled: true, hint: `Array is sorted!`});
 				return;
 			} else {
 				this.setState({ i: this.state.a.length - 1, changed: false, hint: `We've reached the end of array but havent't fully sorted it,

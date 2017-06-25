@@ -16,7 +16,7 @@ export class SelectionSort extends React.Component {
 	}
 
 	handleChangeShuffle() {
-		this.setState({ a: shuffle(this.state.a), i: 0, minIndex: null });
+		this.setState({ a: shuffle(this.state.a), i: 0, minIndex: null, hint: this.state.initialHint });
 	}
 
 	sort() {

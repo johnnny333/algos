@@ -24,7 +24,7 @@ export class MergeSort extends React.Component {
 			return items;
 		}
 
-		var work = [];
+		let work = [];
 		for (var i = 0, len = items.length; i < len; i++) {
 			work.push([items[i]]);
 		}
