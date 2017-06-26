@@ -5,9 +5,12 @@ import { Button, PageHeader } from "react-bootstrap";
 export class MergeSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 10;
+		let arrLength = 10, initialHint = `Splits array into single elements and then merges them back,
+			in order, element by element.`;
+
 		super(props);
-		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), works: [], finalArr: null };
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), 
+			hint: initialHint, initialHint:initialHint, works: [], finalArr: null };
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 		this.sort = this.sort.bind(this);
 		this.merge = this.merge.bind(this);
@@ -68,7 +71,9 @@ export class MergeSort extends React.Component {
 
 			<div>
 
-			<PageHeader>Merge Sort</PageHeader>
+			<PageHeader>Merge Sort<br></br>
+				<small>{this.state.hint}</small>
+			</PageHeader>
 
 				<form onSubmit={e => (e.preventDefault())}>
 					<Button onClick={() => this.sort(this.state.a)} disabled={this.state.finalArr != null ? true : false } ><i className="fa fa-play"></i></Button>
