@@ -4,8 +4,11 @@ import { Button, PageHeader, Form, Well } from "react-bootstrap";
 export class EuclidianAlgorithm extends React.Component {
 
 	constructor(props) {
+		let initialHint = `Finds the greatest common divisor of two numbers.`;
+
 		super(props);
-		this.state = { inputA: 1112, inputB: 695, a: 1112, b: 695, spans: [], formValues: {} };
+		this.state = { inputA: 1112, inputB: 695, a: 1112, b: 695, spans: [], formValues: {},
+			hint: initialHint, initialHint:initialHint };
 		this.handleChangeInputA = this.handleChangeInputA.bind(this);
 		this.handleChangeInputB = this.handleChangeInputB.bind(this);
 		this.gcd = this.gcd.bind(this);
@@ -34,7 +37,8 @@ export class EuclidianAlgorithm extends React.Component {
 		//Display a and b values on first iteration
 		if(!this.state.spans[0]){
 			this.state.spans.push({a: a, b: b, r: a % b});
-			this.setState({a: a, b: b});
+			this.setState({a: a, b: b, hint: `We divide a(${a}) by b(${b}) and write the remainder.
+				This operation is called a modulo (mod) operation.`});
 			return;
 		}
 
@@ -45,7 +49,13 @@ export class EuclidianAlgorithm extends React.Component {
 			b = r;
 
 			this.state.spans.push({a: a, b: b, r: a % b});
-			this.setState({a: a, b: b});
+			this.setState({a: a, b: b, hint: b == 0 ? `When remainder reaches zero the operation is complete. 
+				The greatest common divisor for ${this.state.inputA} and 
+				${this.state.inputB} is ${a}.`
+				
+				:`We take ${a} which was previously a second number and set it 
+				as first number. In turn, the remainder ${r} is now a second number. Modulo operation is
+				carried out again.` });
 		}
 	}
 
@@ -54,14 +64,16 @@ export class EuclidianAlgorithm extends React.Component {
 		return (
 			<div> 
 
-			<PageHeader>Euclidian Algorithm</PageHeader>
+				<PageHeader>Euclidian Algorithm<br></br>
+					<small>{this.state.hint}</small>
+				</PageHeader>
 
 			<Form inline onSubmit={e => (e.preventDefault())}>
-				<span>First number: </span>
+				<span>First number (a): </span>
 				<input type = "number" name="inputA" value={this.state.inputA} min="0" max="65536"
 					onChange = { this.handleChangeInputA } className={"form-control"} />
 
-				<span> Second number: </span> 
+				<span> Second number (b): </span> 
 				<input type = "number" name="inputB" value={this.state.inputB} min="0" max="65536" 
 					onChange = { this.handleChangeInputB } className={"form-control"} />
 							

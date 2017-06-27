@@ -91,8 +91,8 @@ export class QuickSort extends React.Component {
 				</PageHeader>
 
 				<form onSubmit={e => (e.preventDefault())}>
-					<Button onClick={this.quickSort } disabled={disabled}  bsSize="large" ><i className="fa fa-step-forward"></i></Button>
-					<Button onClick={this.handleChangeShuffle} bsSize="large"><i className="fa fa-random"></i></Button>
+					<Button onClick={this.quickSort } disabled={disabled} ><i className="fa fa-step-forward"></i></Button>
+					<Button onClick={this.handleChangeShuffle} ><i className="fa fa-random"></i></Button>
 				</form>
 
 				<hr></hr>
