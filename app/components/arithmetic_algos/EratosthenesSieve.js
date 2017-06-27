@@ -4,29 +4,34 @@ import { Button, PageHeader, Form } from "react-bootstrap";
 export class EratosthenesSieve extends React.Component {
 
 	constructor(props) {
+		let initialHint = `Is a simple, ancient algorithm for finding all prime
+			numbers up to any given limit.`;
+
 		super(props);
-		this.state = { n: 51, isPrime: [], factor: 2, disabled: false };
+		this.state = { n: 51, isPrime: [], factor: 2, hint: initialHint,
+			initialHint:initialHint };
 		this.handleChange = this.handleChange.bind(this);
 		this.sieve = this.sieve.bind(this);
 	}
 
 	handleChange(event) {
-		this.setState({ n: event.target.value, isPrime: [], factor: 2 });
+		this.setState({ n: event.target.value, isPrime: [], factor: 2,
+			hint: this.state.initialHint });
 	}
 
 	sieve() {
 		//http://introcs.cs.princeton.edu/java/14array/PrimeSieve.java.html
+		let n = this.state.n, isPrime = this.state.isPrime, factor = this.state.factor,
+			multiples = [];;
 
-		let n = this.state.n,
-			isPrime = this.state.isPrime,
-			factor = this.state.factor;
-
-		// initially assume all integers are prime
+		// populate array and initially assume all integers are prime
 		if (!isPrime[2]) {
 			for (let i = 2; i <= n; i++) {
 				isPrime[i] = { isPrime: true, i: i };
 			}
-			this.setState({ isPrime: isPrime });
+			this.setState({ isPrime: isPrime, hint: `It check for each number from
+				2 to Math.floor(Math.sqrt(${this.state.n}) = ${ Math.floor(Math.sqrt(n))}
+				if it is a prime number.` });
 			return;
 		}
 
@@ -38,21 +43,12 @@ export class EratosthenesSieve extends React.Component {
 			if (isPrime[factor].isPrime) {
 				for (let j = factor; factor * j <= n; j++) {
 					isPrime[factor * j].isPrime = false;
+					multiples.push(factor * j);
 				}
 			}
-			this.setState({ factor: this.state.factor + 1 })
-		} else {
-			this.setState({ disabled: true });
-			return;
+			this.setState({ factor: this.state.factor + 1, hint: `From iteration ${factor}
+				we cross out all the numbers which are multiples of ${factor}: ${multiples}.` })
 		}
-
-		// count primes
-		let primes = 0;
-		for (let i = 2; i <= n; i++) {
-			if (isPrime[i].isPrime) primes++;
-		}
-
-		this.setState({ isPrime: isPrime });
 	}
 
 	render() {
@@ -63,25 +59,28 @@ export class EratosthenesSieve extends React.Component {
 
 			<div>
 
-			<PageHeader>Eratosthenes Sieve</PageHeader>
+				<PageHeader>Eratosthenes Sieve<br></br>
+					<small>{this.state.hint}</small>
+				</PageHeader>
 
-			<Form inline onSubmit={e => (e.preventDefault())}>
+				<Form inline onSubmit={e => (e.preventDefault())}>
 
-				<input type = "number" value={this.state.n} min="2" max="300" 
-						onChange = { this.handleChange } className={"form-control"} />
+					<input type = "number" value={this.state.n} min="2" max="300"
+							onChange = { this.handleChange } className={"form-control"} />
 
-				<Button onClick={this.sieve} disabled={disabled} ><i className="fa fa-step-forward"></i></Button>
+					<Button onClick={this.sieve} disabled={disabled} >
+						<i className="fa fa-step-forward"></i></Button>
 
-			</Form>
+				</Form>
 
-			<hr></hr>
+				<hr></hr>
 
-			{this.state.isPrime.map(function(object, i){
+				{this.state.isPrime.map(function(object, i){
 
-				if(object.isPrime) {
-					return <span key={i} className="found">{object.i}</span>;	
-				} else {return <span key={i} >{object.i}</span>;}
-			})}
+					if(object.isPrime) {
+						return <span key={i} className="found">{object.i}</span>;
+					} else {return <span key={i} >{object.i}</span>;}
+				})}
 
 			</div>
 		);

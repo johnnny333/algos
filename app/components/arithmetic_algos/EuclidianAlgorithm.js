@@ -49,11 +49,11 @@ export class EuclidianAlgorithm extends React.Component {
 			b = r;
 
 			this.state.spans.push({a: a, b: b, r: a % b});
-			this.setState({a: a, b: b, hint: b == 0 ? `When remainder reaches zero the operation is complete. 
-				The greatest common divisor for ${this.state.inputA} and 
+			this.setState({a: a, b: b, hint: b == 0 ? `When remainder reaches zero the operation is complete.
+				The greatest common divisor for ${this.state.inputA} and
 				${this.state.inputB} is ${a}.`
 
-				:`We take ${a} which was previously a second number and set it 
+				:`We take ${a} which was previously a second number and set it
 				as first number. In turn, the remainder ${r} is now a second number. Modulo operation is
 				carried out again.` });
 		}
@@ -62,7 +62,7 @@ export class EuclidianAlgorithm extends React.Component {
 	render() {
 
 		return (
-			<div> 
+			<div>
 				<PageHeader>Euclidian Algorithm<br></br>
 					<small>{this.state.hint}</small>
 				</PageHeader>
@@ -72,10 +72,10 @@ export class EuclidianAlgorithm extends React.Component {
 				<input type = "number" name="inputA" value={this.state.inputA} min="0" max="65536"
 					onChange = { this.handleChangeInputA } className={"form-control"} />
 
-				<span> Second number (b): </span> 
-				<input type = "number" name="inputB" value={this.state.inputB} min="0" max="65536" 
+				<span> Second number (b): </span>
+				<input type = "number" name="inputB" value={this.state.inputB} min="0" max="65536"
 					onChange = { this.handleChangeInputB } className={"form-control"} />
-							
+
 				<Button onClick={this.gcd} disabled={this.state.b == 0 ? true : false} >
 					<i className="fa fa-calculator"></i> GCD</Button>
 
