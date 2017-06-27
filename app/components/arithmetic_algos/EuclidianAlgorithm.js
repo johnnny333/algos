@@ -27,7 +27,7 @@ export class EuclidianAlgorithm extends React.Component {
 	}
 
 	clean(){
-		this.setState({spans: []} );
+		this.setState({spans: [], hint: this.state.initialHint} );
 	}
 
 	gcd(){
@@ -52,7 +52,7 @@ export class EuclidianAlgorithm extends React.Component {
 			this.setState({a: a, b: b, hint: b == 0 ? `When remainder reaches zero the operation is complete. 
 				The greatest common divisor for ${this.state.inputA} and 
 				${this.state.inputB} is ${a}.`
-				
+
 				:`We take ${a} which was previously a second number and set it 
 				as first number. In turn, the remainder ${r} is now a second number. Modulo operation is
 				carried out again.` });
@@ -63,7 +63,6 @@ export class EuclidianAlgorithm extends React.Component {
 
 		return (
 			<div> 
-
 				<PageHeader>Euclidian Algorithm<br></br>
 					<small>{this.state.hint}</small>
 				</PageHeader>
@@ -91,7 +90,6 @@ export class EuclidianAlgorithm extends React.Component {
 				})}
 
 				</Well>
-
 		</div>
 		);
 	}

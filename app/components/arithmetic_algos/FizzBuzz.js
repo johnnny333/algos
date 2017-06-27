@@ -4,8 +4,11 @@ import { Button, PageHeader, Well } from "react-bootstrap";
 export class FizzBuzz extends React.Component {
 
 	constructor(props) {
+		let initialHint = `Replaces any number divisible by three with the word "fizz", 
+			and any number divisible by five with the word "buzz".`;
+
 		super(props);
-		this.state = {i: null, text: ""};
+		this.state = {i: null, text: "", hint: initialHint, initialHint:initialHint};
 		this.fizzBuzz = this.fizzBuzz.bind(this);
 		this.increment = this.increment.bind(this);
 		this.decrement = this.decrement.bind(this) ;
@@ -24,27 +27,28 @@ export class FizzBuzz extends React.Component {
 		let i = this.state.i;
 
 		if (i % 15 == 0) {
-			this.setState({text: "FizzBuzz"});
+			this.setState({text: "FizzBuzz", hint: `i (${i}) is divisable by 3 (i % 3 == 0) and 5 (i % 5 == 0) 
+				so we print "FizzBuzz".`});
 		}
 		//for multiples of three print “Fizz” instead of the number
 		else if (i % 3 == 0) {
-			this.setState({text: "Fizz"});
+			this.setState({text: "Fizz", hint: `i (${i}) is divisable by 3 (i % 3 == 0) so we print "Fizz".`});
 		}
 		// for the multiples of five print “Buzz”
 		else if (i % 5 == 0) {
-			this.setState({text: "Buzz"});
+			this.setState({text: "Buzz", hint: `i (${i}) is divisable by 5 (i % 5 == 0) so we print "Buzz".` });
 		}
 		else {
-			this.setState({text: ""});
+			this.setState({text: "", hint: "" });
 		}
 	}
 	
 	render() {
 		return (
-
 			<div>
-
-				<PageHeader>FizzBuzz</PageHeader>
+				<PageHeader>FizzBuzz<br></br>
+					<small>{this.state.hint}</small>
+				</PageHeader>
 
 				<Button onClick={this.increment} 
 					disabled = {this.state.i < 20 ? false : true}><i className="fa fa-plus"></i></Button>
