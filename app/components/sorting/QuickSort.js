@@ -64,7 +64,7 @@ export class QuickSort extends React.Component {
 			if (left.length)
 				stack.push(left);
 
-			this.setState({ hint: `Now we compare each number in a array with pivot (${pivot}). If its smaller we place it 
+			this.setState({ hint: `Compare each number in a array with pivot (${pivot}). If its smaller we place it 
 				on the left [${left}] with pivot as last element and if its bigger, on the right [${right}]. 
 				These arrays are then merged.`});
 

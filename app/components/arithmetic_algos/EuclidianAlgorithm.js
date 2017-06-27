@@ -38,7 +38,7 @@ export class EuclidianAlgorithm extends React.Component {
 		if(!this.state.spans[0]){
 			this.state.spans.push({a: a, b: b, r: a % b});
 			this.setState({a: a, b: b, hint: `We divide a(${a}) by b(${b}) and write the remainder.
-				This operation is called a modulo (mod) operation.`});
+				This operation is called a modulo (mod).`});
 			return;
 		}
 
@@ -76,7 +76,8 @@ export class EuclidianAlgorithm extends React.Component {
 				<input type = "number" name="inputB" value={this.state.inputB} min="0" max="65536" 
 					onChange = { this.handleChangeInputB } className={"form-control"} />
 							
-				<Button onClick={this.gcd} disabled={this.state.b == 0 ? true : false} ><i className="fa fa-calculator"></i> GCD</Button>
+				<Button onClick={this.gcd} disabled={this.state.b == 0 ? true : false} >
+					<i className="fa fa-calculator"></i> GCD</Button>
 
 				</Form>
 
@@ -88,7 +89,6 @@ export class EuclidianAlgorithm extends React.Component {
 					if(object.b == 0){return <div key={i}><span>GCD:</span> = <span> {object.a}</span></div>;}
 					return <div key={i}><span >{object.a}</span> mod <span >{object.b}</span> = <span >{object.r}</span></div>;
 				})}
-
 				</Well>
 		</div>
 		);
