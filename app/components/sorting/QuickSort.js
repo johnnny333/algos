@@ -5,17 +5,18 @@ import { Button, PageHeader } from "react-bootstrap";
 export class QuickSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 9, initialHint = `First, we chose a pivot which divide array in two halves.`;
+		let arrLength = 10, initialHint = `First, we chose a pivot which divide array in two halves.`;
 
 		super(props);
 		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), stack: [], sorted: [],
-			pivot: null, hint: initialHint, initialHint:initialHint };
+			pivot: null, hint: initialHint, initialHint:initialHint, disabled: false };
 		this.quickSort = this.quickSort.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 	}
 
 	handleChangeShuffle() {
-		this.setState({ a: shuffle(this.state.a), stack: [], sorted: [], pivot: null, tempLength: null});
+		this.setState({ a: shuffle(this.state.a), stack: [], sorted: [], pivot: null, tempLength: null, 
+			hint : this.state.initialHint, disabled: false});
 	}
 
 	quickSort() {
@@ -28,8 +29,6 @@ export class QuickSort extends React.Component {
 		}
 
 		if (stack.length) {
-
-			this.setState({hint: `jelp ${pivot} `})
 
 			let temp = stack.pop(), tempLength = temp.length;
 
@@ -65,22 +64,23 @@ export class QuickSort extends React.Component {
 			if (left.length)
 				stack.push(left);
 
+			this.setState({ hint: `Now we compare each number in a array with pivot (${pivot}). If its smaller we place it 
+				on the left [${left}] with pivot as last element and if its bigger, on the right [${right}]. 
+				These arrays are then merged.`});
+
 			if(rest.length <= this.state.a.length){
 				this.setState({ stack: stack, pivot: pivot , a: rest  });
 			} else {
-				console.log("hello")
-				this.setState({ a: sorted });
+				//Last iteration
+				this.setState({ a: sorted, disabled: true, hint: "Array is sorted!"});
 			} 
 		}
-		this.setState({ sorted: sorted});
+		this.setState({ sorted: sorted });
 	}
 
 	render() {
 
-		console.log(this.state.sorted.length)
-
-		let pivot = this.state.pivot, sortedLenght = this.state.sorted.length, 
-			disabled = this.state.sorted.length  == this.state.a.length  ? true: false;
+		let sortedLenght = this.state.sorted.length, disabled = this.state.disabled;
 
 		return (
 
@@ -91,8 +91,8 @@ export class QuickSort extends React.Component {
 				</PageHeader>
 
 				<form onSubmit={e => (e.preventDefault())}>
-					<Button onClick={this.quickSort }  ><i className="fa fa-step-forward"></i></Button>
-					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
+					<Button onClick={this.quickSort } disabled={disabled}  bsSize="large" ><i className="fa fa-step-forward"></i></Button>
+					<Button onClick={this.handleChangeShuffle} bsSize="large"><i className="fa fa-random"></i></Button>
 				</form>
 
 				<hr></hr>
@@ -107,7 +107,6 @@ export class QuickSort extends React.Component {
 				return <span key={i} >{object}</span>;
 			})
 			}
-
 			</div>
 		);
 	}
