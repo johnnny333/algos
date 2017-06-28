@@ -47,13 +47,14 @@ export class EratosthenesSieve extends React.Component {
 				}
 			}
 			this.setState({ factor: this.state.factor + 1, hint: `From iteration ${factor}
-				we cross out all the numbers which are multiples of ${factor}: ${multiples}.` })
+				we cross out all the numbers which are multiples of ${factor}: ${multiples}.
+				${factor === Math.floor(Math.sqrt(n)) ? "All we got left are prime numbers!" : ""} `})
 		}
 	}
 
 	render() {
-
 		let disabled = this.state.factor > Math.floor(Math.sqrt(this.state.n)) ? true : false;
+
 
 		return (
 
@@ -81,7 +82,6 @@ export class EratosthenesSieve extends React.Component {
 						return <span key={i} className="found">{object.i}</span>;
 					} else {return <span key={i} >{object.i}</span>;}
 				})}
-
 			</div>
 		);
 	}
