@@ -5,7 +5,9 @@ import { Button, PageHeader } from "react-bootstrap";
 export class SelectionSort extends React.Component {
 
 	constructor(props) {
-		let arrLength = 10, initialHint = "Selection Sort works by using Linear Search to find " + 
+		document.title = "Selection Sort";
+
+		let arrLength = 10, initialHint = "Selection Sort works by using Linear Search to find " +
 			" the smallest value in an array and then placing it in the leftmost position.";
 
 		super(props);
@@ -50,7 +52,7 @@ export class SelectionSort extends React.Component {
 			this.setState({ minIndex: minIndex, hint: `The smallest, unsorted value is '${min}' so we place it in the leftmost position.` });
 			return;
 		}
-		
+
 	}
 
 	render() {
@@ -78,7 +80,7 @@ export class SelectionSort extends React.Component {
 			{this.state.a.map(function(object, i) {
 				if(i == minIndex){return <span className="found" key={i}>{object}</span>;}
 				if(i < currentIter){return <span className="sorted" key={i}>{object}</span>;}
-				
+
 				return <span key={i} >{object}</span>;
 			})
 			}

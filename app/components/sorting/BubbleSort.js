@@ -5,11 +5,13 @@ import { Button, PageHeader } from "react-bootstrap";
 export class BubbleSort extends React.Component {
 
 	constructor(props) {
+		document.title = "Bubble Sort";
+
 		let arrLength = 10, initialHint = "Bubble Sort works by comparing two, adjacent array elements (arr[n] < arr[n - 1]).";
 
 		super(props);
-		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), 
-			i: null, swapped: false, changed: false, disabled: false, initialHint:initialHint, 
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)),
+			i: null, swapped: false, changed: false, disabled: false, initialHint:initialHint,
 			hint: initialHint, arrLength: arrLength, bubbleIteration: 1 };
 		this.sort = this.sort.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
@@ -40,14 +42,14 @@ export class BubbleSort extends React.Component {
 			let temp = myTable[this.state.i - 1];
 			myTable[i - 1] = myTable[i];
 			myTable[i] = temp;
-			this.setState({ swapped: true, changed: true, hint: `Yes, ${myTable[i - 1]} is < than ${myTable[i]}, 
+			this.setState({ swapped: true, changed: true, hint: `Yes, ${myTable[i - 1]} is < than ${myTable[i]},
 				so we swap those numbers.` });
 
 			return;
 		}
 
 		/*
-		 * Check if the end of array was reached, and if, 
+		 * Check if the end of array was reached, and if,
 		 * reset the value of i to the start(end of array) and return.
 		 */
 		if (i === this.state.bubbleIteration) {

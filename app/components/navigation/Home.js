@@ -1,3 +1,9 @@
 import React from "react";
 
-export const Home = () => <h1>Hello from Home!</h1>;
+export class Home extends React.Component {
+
+  render() {
+    document.title = "Algos";
+    return <h1>Hello from Home!</h1>;
+  }
+}

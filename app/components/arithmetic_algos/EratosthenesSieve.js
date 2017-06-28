@@ -4,6 +4,8 @@ import { Button, PageHeader, Form } from "react-bootstrap";
 export class EratosthenesSieve extends React.Component {
 
 	constructor(props) {
+		document.title = "Eratosthenes Sieve";
+
 		let initialHint = `Is a simple, ancient algorithm for finding all prime
 			numbers up to any given limit.`;
 

@@ -5,6 +5,7 @@ export class EuclidianAlgorithm extends React.Component {
 
 	constructor(props) {
 		let initialHint = `Finds the greatest common divisor of two numbers.`;
+		document.title = "Euclidian Algorithm";
 
 		super(props);
 		this.state = { inputA: 1112, inputB: 695, a: 1112, b: 695, spans: [], formValues: {},

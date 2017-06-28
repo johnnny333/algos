@@ -5,11 +5,13 @@ import { Button, PageHeader } from "react-bootstrap";
 export class MergeSort extends React.Component {
 
 	constructor(props) {
+		document.title = "Merge Sort";
+
 		let arrLength = 10, initialHint = `Splits array into single elements and then merges them back,
 			in order, element by element.`;
 
 		super(props);
-		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), 
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)),
 			hint: initialHint, initialHint:initialHint, works: [], finalArr: null };
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
 		this.sort = this.sort.bind(this);

@@ -5,6 +5,7 @@ import { Button, PageHeader } from "react-bootstrap";
 export class QuickSort extends React.Component {
 
 	constructor(props) {
+		document.title = "Quick Sort";
 		let arrLength = 10, initialHint = `First, we chose a pivot which divide array in two halves.`;
 
 		super(props);
@@ -15,7 +16,7 @@ export class QuickSort extends React.Component {
 	}
 
 	handleChangeShuffle() {
-		this.setState({ a: shuffle(this.state.a), stack: [], sorted: [], pivot: null, tempLength: null, 
+		this.setState({ a: shuffle(this.state.a), stack: [], sorted: [], pivot: null, tempLength: null,
 			hint : this.state.initialHint, disabled: false});
 	}
 
@@ -64,8 +65,8 @@ export class QuickSort extends React.Component {
 			if (left.length)
 				stack.push(left);
 
-			this.setState({ hint: `Compare each number in a array with pivot (${pivot}). If its smaller we place it 
-				on the left [${left}] with pivot as last element and if its bigger, on the right [${right}]. 
+			this.setState({ hint: `Compare each number in a array with pivot (${pivot}). If its smaller we place it
+				on the left [${left}] with pivot as last element and if its bigger, on the right [${right}].
 				These arrays are then merged.`});
 
 			if(rest.length <= this.state.a.length){
@@ -73,7 +74,7 @@ export class QuickSort extends React.Component {
 			} else {
 				//Last iteration
 				this.setState({ a: sorted, disabled: true, hint: "Array is sorted!"});
-			} 
+			}
 		}
 		this.setState({ sorted: sorted });
 	}

@@ -5,10 +5,11 @@ import { Button, PageHeader } from "react-bootstrap";
 export class InsertionSort extends React.Component {
 
 	constructor(props) {
+		document.title = "Insertion Sort";
 		let arrLength = 10, initialHint = `We consider leftmost number fully sorted.`;
 
 		super(props);
-		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)), 
+		this.state = { a: shuffle(Array.from({ length: arrLength }, (val, key) => key)),
 			i: 0, j: null, currentKey: null, hint: initialHint, initialHint:initialHint };
 		this.sort = this.sort.bind(this);
 		this.handleChangeShuffle = this.handleChangeShuffle.bind(this);
@@ -21,7 +22,7 @@ export class InsertionSort extends React.Component {
 
 	sort() {
 
-		let currentKey = this.state.currentKey, j = this.state.j, 
+		let currentKey = this.state.currentKey, j = this.state.j,
 			sortedArray = this.state.a, i = this.state.i + 1;
 
 		//Insert currently sorted element at right position.
@@ -32,11 +33,11 @@ export class InsertionSort extends React.Component {
 			sortedArray[j] = currentKey;
 			this.setState({ j: j, hint: `${sortedArray[j]}  is smaller than ${sortedArray[j + 1]} so the numbers swap.` });
 
-		//Traverse array one index further.  	
+		//Traverse array one index further.
 		} else if(j < sortedArray.length - 1 && i != sortedArray.length ) {
 
 			let j = i, currentKey = sortedArray[i];
-			this.setState({ a: sortedArray, i: i, j: j, currentKey: currentKey, hint: `From the unsorted numbers we take leftmost 
+			this.setState({ a: sortedArray, i: i, j: j, currentKey: currentKey, hint: `From the unsorted numbers we take leftmost
 				number (${sortedArray[j]}) and compare if its smaller than the sorted number to its left.` });
 
 		//Sort is done
@@ -48,7 +49,7 @@ export class InsertionSort extends React.Component {
 
 	render() {
 
-		let currentIter = this.state.i, j = this.state.j, 
+		let currentIter = this.state.i, j = this.state.j,
 			disabled = this.state.j >= this.state.a.length ? true : false;
 
 		return (
