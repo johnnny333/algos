@@ -77,13 +77,6 @@ export class MergeSort extends React.Component {
 				<small>{this.state.hint}</small>
 			</PageHeader>
 
-				<form onSubmit={e => (e.preventDefault())}>
-					<Button onClick={() => this.sort(this.state.a)} disabled={this.state.finalArr != null ? true : false } ><i className="fa fa-play"></i></Button>
-					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
-				</form>
-
-			<hr></hr>
-
 			{ /* Render spans representing array elements */ }
 			{this.state.a.map(function(object, i) {
 				return <span key={i} >{object}</span>;
@@ -99,6 +92,17 @@ export class MergeSort extends React.Component {
 			</div>
 
 			{finalArr}
+
+			<hr></hr>
+
+				<form onSubmit={e => (e.preventDefault())}>
+					<Button onClick={this.handleChangeShuffle} bsSize="large"><i className="fa fa-random"></i></Button>
+					<Button onClick={() => this.sort(this.state.a)} disabled={this.state.finalArr != null ? true : false } bsSize="large" >
+						<i className="fa fa-play"></i>
+					</Button>
+				</form>
+
+			<hr></hr>
 
 			</div>
 		);

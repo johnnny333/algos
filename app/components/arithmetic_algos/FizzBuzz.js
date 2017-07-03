@@ -52,17 +52,25 @@ export class FizzBuzz extends React.Component {
 					<small>{this.state.hint}</small>
 				</PageHeader>
 
-				<Button onClick={this.increment}
-					disabled = {this.state.i < 20 ? false : true}><i className="fa fa-plus"></i></Button>
-				<Button onClick={this.decrement}
-					disabled = {this.state.i == null || this.state.i == 0 ? true: false}><i className="fa fa-minus"></i></Button>
-
-				<hr></hr>
-
-				<Well id={"fizz-buzz-well"} style={{display: this.state.i != null ? "block" : "none" }} >
+				<Well id={"fizz-buzz-well"}  >
 					<h3> {this.state.i} </h3>
 					<h2 className={this.state.text === "FizzBuzz" ? "text-success": "text-primary"}> {this.state.text} </h2>
 				</Well>
+
+				<hr></hr>
+
+				<form>
+
+				<Button onClick={this.increment} bsSize="large"
+					disabled = {this.state.i < 20 ? false : true}><i className="fa fa-plus"></i></Button>
+				<Button onClick={this.decrement} bsSize="large"
+					disabled = {this.state.i == null || this.state.i == 0 ? true: false}><i className="fa fa-minus"></i></Button>
+
+				</form>
+
+				<hr></hr>
+
+				
 			</div>
 		);
 	}

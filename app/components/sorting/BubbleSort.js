@@ -80,25 +80,30 @@ export class BubbleSort extends React.Component {
 					<small>{this.state.hint}</small>
 				</PageHeader>
 
+				{ /* Render spans representing array elements */ }
+				{this.state.a.map(function(object, i) {
 
-				<form onSubmit={e => (e.preventDefault())}>
-					<Button onClick={this.sort} disabled={this.state.disabled}><i className="fa fa-step-forward"></i></Button>
+					if(i == currentI){return <span className={highlighting} key={i}>{object}</span>;}
+					if(i == currentI - 1){return <span className={highlighting} key={i}>{object}</span>;}
+					if(i < bubbleIteration){return <span className={"sorted"} key={i}>{object}</span>;}
 
-					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
-				</form>
+					return <span key={i} >{object}</span>;
+				})
+				}
 
 				<hr></hr>
 
-			{ /* Render spans representing array elements */ }
-			{this.state.a.map(function(object, i) {
+				<form onSubmit={e => (e.preventDefault())}>
+					<Button onClick={this.handleChangeShuffle} bsSize="large">
+						<i className="fa fa-random"></i>
+					</Button>
+					<Button onClick={this.sort} disabled={this.state.disabled} bsSize="large" >
+						<i className="fa fa-step-forward"></i>
+					</Button>
+				</form>
 
-				if(i == currentI){return <span className={highlighting} key={i}>{object}</span>;}
-				if(i == currentI - 1){return <span className={highlighting} key={i}>{object}</span>;}
-				if(i < bubbleIteration){return <span className={"sorted"} key={i}>{object}</span>;}
-
-				return <span key={i} >{object}</span>;
-			})
-			}
+				<hr></hr>
+			
 			</div>
 		);
 	}

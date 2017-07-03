@@ -84,6 +84,10 @@ div.navbar-collapse.collapse > p > a,
       height: 130px;
       }
 
+.larger-header {
+  height: 170px;
+}
+
 /* Fixed height for page-header to eliminate page "jumping"
   when content inside changes */
 @media screen and (max-width: 768px) {
@@ -94,8 +98,12 @@ div.navbar-collapse.collapse > p > a,
   }
 }
 
-form.form-inline {
+form {
   text-align: center;
+}
+
+form > button:first-of-type    {
+  margin: 0 7px;
 }
 
 /* Display form inline on narrow screen */

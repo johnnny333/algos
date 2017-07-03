@@ -64,7 +64,7 @@ export class EuclidianAlgorithm extends React.Component {
 
 		return (
 			<div>
-				<PageHeader>Euclidian Algorithm<br></br>
+				<PageHeader className="larger-header" >Euclidian Algorithm<br></br>
 					<small>{this.state.hint}</small>
 				</PageHeader>
 

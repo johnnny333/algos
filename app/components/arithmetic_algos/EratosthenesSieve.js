@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, PageHeader, Form } from "react-bootstrap";
+import { Button, PageHeader, Form, FormGroup, FormControl } from "react-bootstrap";
 
 export class EratosthenesSieve extends React.Component {
 
@@ -55,23 +55,26 @@ export class EratosthenesSieve extends React.Component {
 	}
 
 	render() {
-		let disabled = this.state.factor > Math.floor(Math.sqrt(this.state.n)) ? true : false;
+		let disabled = this.state.factor > Math.floor(Math.sqrt(this.state.n)) ? true : false,
+			disabledInput = this.state.n <= 300 &&  this.state.n >= 0 ;
+
 
 
 		return (
 
 			<div>
 
-				<PageHeader>Eratosthenes Sieve<br></br>
+				<PageHeader >Eratosthenes Sieve<br></br>
 					<small>{this.state.hint}</small>
 				</PageHeader>
 
 				<Form inline onSubmit={e => (e.preventDefault())}>
 
-					<input type = "number" value={this.state.n} min="2" max="300"
-							onChange = { this.handleChange } className={"form-control"} />
+					<FormGroup validationState= { disabledInput ? "success" : "error"} bsSize="large" >
+						<FormControl type="number" min={2} max={300} value={this.state.n} onChange = { this.handleChange }  />
+					</FormGroup>
 
-					<Button onClick={this.sieve} disabled={disabled} >
+					<Button onClick={this.sieve} disabled={disabled || !disabledInput} bsSize="large" >
 						<i className="fa fa-step-forward"></i></Button>
 
 				</Form>

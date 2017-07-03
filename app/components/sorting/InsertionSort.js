@@ -60,23 +60,25 @@ export class InsertionSort extends React.Component {
 					<small>{this.state.hint}</small>
 				</PageHeader>
 
+				{ /* Render spans representing array elements */ }
+				{this.state.a.map(function(object, i) {
+
+					if(i == j){return <span className="found" key={i}>{object}</span>;}
+					if(i < currentIter){return <span className="sorted" key={i}>{object}</span>;}
+
+					return <span key={i} >{object}</span>;
+				})
+				}
+
+				<hr></hr>
 
 				<form onSubmit={e => (e.preventDefault())}>
-					<Button onClick={this.sort} disabled={disabled} ><i className="fa fa-step-forward"></i></Button>
-					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
+					<Button onClick={this.handleChangeShuffle} bsSize="large" ><i className="fa fa-random"></i></Button>
+					<Button onClick={this.sort} disabled={disabled} bsSize="large" ><i className="fa fa-step-forward"></i></Button>
 				</form>
 
-			<hr></hr>
-
-			{ /* Render spans representing array elements */ }
-			{this.state.a.map(function(object, i) {
-
-				if(i == j){return <span className="found" key={i}>{object}</span>;}
-				if(i < currentIter){return <span className="sorted" key={i}>{object}</span>;}
-
-				return <span key={i} >{object}</span>;
-			})
-			}
+				<hr></hr>
+			
 			</div>
 		);
 	}

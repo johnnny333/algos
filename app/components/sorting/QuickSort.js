@@ -87,27 +87,30 @@ export class QuickSort extends React.Component {
 
 			<div>
 
-				<PageHeader>Quick Sort<br></br>
+				<PageHeader className="larger-header">Quick Sort<br></br>
 					<small>{this.state.hint}</small>
 				</PageHeader>
 
-				<form onSubmit={e => (e.preventDefault())}>
-					<Button onClick={this.quickSort } disabled={disabled} ><i className="fa fa-step-forward"></i></Button>
-					<Button onClick={this.handleChangeShuffle} ><i className="fa fa-random"></i></Button>
-				</form>
+				{ /* Render spans representing array elements */ }
+				{this.state.a.map(function(object, i) {
+
+					//Pivot
+					if(i == sortedLenght){return <span className="selected" key={i}>{object}</span>;}
+					if(i < sortedLenght){return <span className="sorted" key={i}>{object}</span>;}
+
+					return <span key={i} >{object}</span>;
+				})
+				}
 
 				<hr></hr>
 
-			{ /* Render spans representing array elements */ }
-			{this.state.a.map(function(object, i) {
+				<form onSubmit={e => (e.preventDefault())}>
+					<Button onClick={this.handleChangeShuffle} bsSize="large"><i className="fa fa-random"></i></Button>
+					<Button onClick={this.quickSort } disabled={disabled} bsSize="large"><i className="fa fa-step-forward"></i></Button>
+				</form>
 
-				//Pivot
-				if(i == sortedLenght){return <span className="selected" key={i}>{object}</span>;}
-				if(i < sortedLenght){return <span className="sorted" key={i}>{object}</span>;}
-
-				return <span key={i} >{object}</span>;
-			})
-			}
+				<hr></hr>
+			
 			</div>
 		);
 	}
