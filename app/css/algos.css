@@ -112,10 +112,8 @@ div.navbar-collapse.collapse > p > a,
 /* Fixed height for page-header to eliminate page "jumping"
   when content inside changes */
 @media screen and (max-width: 768px) {
-    .page-header {
-      height: 160px;
-      overflow: auto;
-      margin: 20px 0px;
+  h1 small {
+    font-size: 45%;
   }
 }
 
