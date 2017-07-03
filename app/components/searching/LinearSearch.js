@@ -1,6 +1,6 @@
 import React from "react";
 import {shuffle} from "../../helpers/HelperFunctions";
-import { Button, PageHeader, Form } from "react-bootstrap";
+import { Button, PageHeader, Form, FormGroup, FormControl } from "react-bootstrap";
 
 export class LinearSearch extends React.Component {
 
@@ -43,7 +43,9 @@ export class LinearSearch extends React.Component {
 
 	render() {
 
-		let found = this.state.found, currentIter = this.state.i, disabled = this.state.found != null ? true : false;
+		let found = this.state.found, currentIter = this.state.i, 
+			disabled = this.state.found != null ? true : false, 
+			disabledInput =  this.state.key < this.state.a.length &&  this.state.key >= 0 ? true: false;
 
 		return (
 			<div>
@@ -52,21 +54,6 @@ export class LinearSearch extends React.Component {
 					<small>{this.state.hint}</small>
 				</PageHeader>
 
-				<Form inline onSubmit={e => (e.preventDefault())}>
-
-					<span>Number to find: </span>
-					<input type = "number" value={this.state.key} min="0" max={this.state.a.length -1}
-						onChange = { this.handleChange } className={"form-control"} />
-
-					<Button onClick={this.indexOf} disabled={disabled}><i className="fa fa-search"></i></Button>
-
-					{/* This breaks React principle of keeping immutable objects but makes shuffle() algo
-					more efficient */}
-					<Button onClick={this.handleChangeShuffle}><i className="fa fa-random"></i></Button>
-
-				</Form>
-
-				<hr></hr>
 
 				{/* Render spans representing array elements */}
 				{this.state.a.map(function(object, i){
@@ -74,6 +61,26 @@ export class LinearSearch extends React.Component {
 					if(i <= currentIter){return <span className="sorted" key={i}>{object}</span>;}
 					return <span key={i} >{object}</span>;
 				})}
+
+				<hr></hr>
+
+				<Form inline onSubmit={e => (e.preventDefault())}>
+					<span>{`Number to find (0 - ${this.state.a.length -1 }):`} </span>
+					<FormGroup validationState= { disabledInput ? "success" : "error"} bsSize="large" >
+						<FormControl type="number" min={0} max={this.state.arrLength - 1} value={this.state.key} onChange = { this.handleChange }  />
+					</FormGroup>
+
+					<Button onClick={this.indexOf} disabled={disabled || !disabledInput} bsSize="large"><i className="fa fa-search"></i></Button>
+
+					{/* This breaks React principle of keeping immutable objects but makes shuffle() algo
+					more efficient */}
+					<Button onClick={this.handleChangeShuffle} bsSize="large" >
+						<i className="fa fa-random" ></i>
+					</Button>
+				</Form>
+
+				<hr></hr>
+
 			</div>
 		);
 	}

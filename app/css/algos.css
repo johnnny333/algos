@@ -88,8 +88,22 @@ div.navbar-collapse.collapse > p > a,
   when content inside changes */
 @media screen and (max-width: 768px) {
     .page-header {
-      height: 150px;
+      height: 160px;
       overflow: auto;
       margin: 20px 0px;
   }
+}
+
+form.form-inline {
+  text-align: center;
+}
+
+/* Display form inline on narrow screen */
+div.form-group{
+  display: inline;
+}
+
+/* Size of label */
+form>span {
+  font-size: larger;
 }

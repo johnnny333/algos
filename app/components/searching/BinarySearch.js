@@ -1,12 +1,12 @@
 import React from "react";
-import { Button, PageHeader, Form } from "react-bootstrap";
+import { Button, PageHeader, Form, FormGroup, FormControl } from "react-bootstrap";
 
 export class BinarySearch extends React.Component {
 
 	constructor(props) {
 		document.title = "Binary Search";
 
-		let arrLength = 30, initialHint = "Pick a number and click magnifying glass to find it in a array.";
+		let arrLength = 10, initialHint = "Pick a number and click magnifying glass to find it in a array.";
 
 		super(props);
 		this.state = { key: 0, lo: 0, hi: arrLength, mid: -1, a: Array.from({ length: arrLength }, (val, key) => key)  ,
@@ -17,7 +17,7 @@ export class BinarySearch extends React.Component {
 
 	handleChange(event) {
 		this.setState({mid: -1, hi: this.state.arrLength, lo: 0, hint: this.state.initialHint,
-			key: event.target.value});
+			key:  event.target.value });
 	}
 
 	indexOf() {
@@ -36,7 +36,8 @@ export class BinarySearch extends React.Component {
 	}
 
 	render() {
-		let mid = this.state.mid, lo = this.state.lo, hi = this.state.hi;
+		let mid = this.state.mid, lo = this.state.lo, hi = this.state.hi,
+			disabled = this.state.key < this.state.arrLength &&  this.state.key >= 0;
 
 		return (
 			<div>
@@ -45,17 +46,6 @@ export class BinarySearch extends React.Component {
 					<small>{this.state.hint}</small>
 				</PageHeader>
 
-				<Form inline onSubmit={e => (e.preventDefault())}>
-					<span>Number to find: </span>
-					<input type = "number" value={this.state.key} min="0" max={this.state.arrLength - 1}
-						onChange = { this.handleChange } className={"form-control"} />
-
-					<Button onClick={this.indexOf} disabled={this.state.mid != -1 ? true: false} ><i className="fa fa-search"></i></Button>
-
-				</Form>
-
-				<hr></hr>
-
 				{/* Render spans representing array elements */}
 				{this.state.a.map(function(object, i){
 
@@ -63,6 +53,22 @@ export class BinarySearch extends React.Component {
 					if(i >= lo && i <= hi){return <span key={i} className="sorted" >{object}</span>;}
 					return <span key={i} >{object}</span>;
 				})}
+
+				<hr></hr>
+
+				<Form inline onSubmit={e => (e.preventDefault())}>
+					<span>{`Number to find (0 - ${this.state.a.length -1 }):`} </span>
+					<FormGroup validationState= { disabled ? "success" : "error"} bsSize="large" >
+						<FormControl type="number" min={0} max={this.state.arrLength - 1} value={this.state.key} onChange = { this.handleChange }  />
+					</FormGroup>
+
+					<Button onClick={this.indexOf} disabled={this.state.mid != -1 || !disabled ? true: false} bsSize="large" >
+						<i className="fa fa-search"></i>
+					</Button>
+
+				</Form>
+				
+				<hr></hr>
 			</div>
 		);
 	}
