@@ -16,6 +16,11 @@ div > span {
   transition: background-color 0.3s;
 }
 
+/* smallee font for well spans */
+div#euclidian-well > div > span {
+  font-size: small;
+}
+
 
 div.well > div:nth-child(odd) > span:nth-child(odd),
 div.well > div:nth-child(even) > span:nth-child(even) {

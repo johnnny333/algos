@@ -84,7 +84,7 @@ export class EuclidianAlgorithm extends React.Component {
 
 				<hr></hr>
 
-				<Well className={"text-center"} style={{display: this.state.spans[0] != null ? "block" : "none" }}>
+				<Well id="euclidian-well" className={"text-center"} style={{display: this.state.spans[0] != null ? "block" : "none" }}>
 
 				{this.state.spans.map(function(object, i){
 					if(object.b == 0){return <div key={i}><span>GCD:</span> = <span> {object.a}</span></div>;}
