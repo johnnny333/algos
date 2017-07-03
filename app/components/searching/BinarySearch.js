@@ -6,7 +6,7 @@ export class BinarySearch extends React.Component {
 	constructor(props) {
 		document.title = "Binary Search";
 
-		let arrLength = 10, initialHint = "Pick a number and click magnifying glass to find it in a array.";
+		let arrLength = 30, initialHint = "Pick a number and click magnifying glass to find it in a array.";
 
 		super(props);
 		this.state = { key: 0, lo: 0, hi: arrLength, mid: -1, a: Array.from({ length: arrLength }, (val, key) => key)  ,

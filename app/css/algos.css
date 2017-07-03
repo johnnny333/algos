@@ -16,6 +16,22 @@ div > span {
   transition: background-color 0.3s;
 }
 
+
+div.well > div:nth-child(odd) > span:nth-child(odd),
+div.well > div:nth-child(even) > span:nth-child(even) {
+  background-color: #E91E63;
+}
+
+div.well > div:nth-child(odd) > span:nth-child(even),
+div.well > div:nth-child(even) > span:nth-child(odd) {
+  background-color: #4CAF50;
+}
+
+/* Don't highlight first span */
+div.well > div:nth-child(1) > span:nth-child(1) {
+  background-color: rgba(128, 128, 128, 0.58);
+  }
+
 div > span.found {
   background-color: #FFEB3B; 
   border: 2px orange solid;

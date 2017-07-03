@@ -10,7 +10,7 @@ export class LinearSearch extends React.Component {
 		let initialHint = "Pick a number and click magnifying glass to find it in a array.";
 
 		super(props);
-		this.state = {key: 0, a: shuffle( Array.from({ length: 20 }, (val, key) => key) ), i: -1,
+		this.state = {key: 0, a: shuffle( Array.from({ length: 30 }, (val, key) => key) ), i: -1,
 			found: null, initialHint: initialHint, hint: initialHint };
 		this.indexOf = this.indexOf.bind(this);
 		this.handleChange = this.handleChange.bind(this);
