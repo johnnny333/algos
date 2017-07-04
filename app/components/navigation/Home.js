@@ -7,7 +7,7 @@ export class Home extends React.Component {
     document.title = "Algos";
     return (
       <div>
-        <PageHeader>Algos<br></br>
+        <PageHeader className="larger-header">Algos<br></br>
           <small>Was made as an attempt to learn React and few algorithms.
           Contributions, suggestions, issues etc are very welcome - repo link is
           in top, right corner.
