@@ -61,16 +61,16 @@ export class FizzBuzz extends React.Component {
 
 				<form>
 
-				<Button onClick={this.increment} bsSize="large"
+				<Button onClick={this.increment} 
 					disabled = {this.state.i < 20 ? false : true}><i className="fa fa-plus"></i></Button>
-				<Button onClick={this.decrement} bsSize="large"
+				<Button onClick={this.decrement}
 					disabled = {this.state.i == null || this.state.i == 0 ? true: false}><i className="fa fa-minus"></i></Button>
 
 				</form>
 
 				<hr></hr>
 
-				
+
 			</div>
 		);
 	}

@@ -58,12 +58,12 @@ export class BinarySearch extends React.Component {
 
 				<Form inline onSubmit={e => (e.preventDefault())}>
 					<span>{`Number to find (0 - ${this.state.a.length -1 }):`} </span>
-					<FormGroup validationState= { disabled ? "success" : "error"} bsSize="large" >
+					<FormGroup validationState= { disabled ? "success" : "error"}  >
 						<FormControl type="number" min={0} max={this.state.arrLength - 1} value={this.state.key}
 							onChange = { this.handleChange }  />
 					</FormGroup>
 
-					<Button onClick={this.indexOf} disabled={this.state.mid != -1 || !disabled ? true: false} bsSize="large" >
+					<Button onClick={this.indexOf} disabled={this.state.mid != -1 || !disabled ? true: false}  >
 						<i className="fa fa-search"></i>
 					</Button>
 

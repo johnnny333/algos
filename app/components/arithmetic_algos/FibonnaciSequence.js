@@ -2,7 +2,7 @@ import React from "react";
 import { Button, PageHeader, Form, FormGroup, FormControl } from "react-bootstrap";
 
 export class FibonnaciSequence extends React.Component {
-	
+
 	constructor(props) {
 		document.title = "Fibonnaci Sequence";
 
@@ -48,11 +48,11 @@ export class FibonnaciSequence extends React.Component {
 
 				<Form inline onSubmit={e => (e.preventDefault())}>
 
-					<FormGroup validationState= { disabledInput ? "success" : "error"} bsSize="large" >
+					<FormGroup validationState= { disabledInput ? "success" : "error"}  >
 						<FormControl type="number" min={2} max={30} value={this.state.key} onChange = { this.handleChange }  />
 					</FormGroup>
 
-					<Button onClick = { this.fibonnaci } bsSize="large"
+					<Button onClick = { this.fibonnaci }
 						disabled = {disabled || !disabledInput}><i className="fa fa-step-forward"></i></Button>
 
 				</Form>

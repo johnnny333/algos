@@ -66,16 +66,16 @@ export class LinearSearch extends React.Component {
 
 				<Form inline onSubmit={e => (e.preventDefault())}>
 					<span>{`Number to find (0 - ${this.state.a.length -1 }):`} </span>
-					<FormGroup validationState= { disabledInput ? "success" : "error"} bsSize="large" >
+					<FormGroup validationState= { disabledInput ? "success" : "error"} >
 						<FormControl type="number" min={0} max={this.state.a.length - 1} value={this.state.key}
 							onChange = { this.handleChange }  />
 					</FormGroup>
 
-					<Button onClick={this.indexOf} disabled={disabled || !disabledInput} bsSize="large"><i className="fa fa-search"></i></Button>
+					<Button onClick={this.indexOf} disabled={disabled || !disabledInput} ><i className="fa fa-search"></i></Button>
 
 					{/* This breaks React principle of keeping immutable objects but makes shuffle() algo
 					more efficient */}
-					<Button onClick={this.handleChangeShuffle} bsSize="large" >
+					<Button onClick={this.handleChangeShuffle} >
 						<i className="fa fa-random" ></i>
 					</Button>
 				</Form>

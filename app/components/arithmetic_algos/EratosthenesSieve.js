@@ -70,11 +70,11 @@ export class EratosthenesSieve extends React.Component {
 
 				<Form inline onSubmit={e => (e.preventDefault())}>
 
-					<FormGroup validationState= { disabledInput ? "success" : "error"} bsSize="large" >
+					<FormGroup validationState= { disabledInput ? "success" : "error"}  >
 						<FormControl type="number" min={2} max={300} value={this.state.n} onChange = { this.handleChange }  />
 					</FormGroup>
 
-					<Button onClick={this.sieve} disabled={disabled || !disabledInput} bsSize="large" >
+					<Button onClick={this.sieve} disabled={disabled || !disabledInput}  >
 						<i className="fa fa-step-forward"></i></Button>
 
 				</Form>

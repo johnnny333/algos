@@ -94,16 +94,16 @@ export class BubbleSort extends React.Component {
 				<hr></hr>
 
 				<form onSubmit={e => (e.preventDefault())}>
-					<Button onClick={this.handleChangeShuffle} bsSize="large">
+					<Button onClick={this.handleChangeShuffle} >
 						<i className="fa fa-random"></i>
 					</Button>
-					<Button onClick={this.sort} disabled={this.state.disabled} bsSize="large" >
+					<Button onClick={this.sort} disabled={this.state.disabled}  >
 						<i className="fa fa-step-forward"></i>
 					</Button>
 				</form>
 
 				<hr></hr>
-			
+
 			</div>
 		);
 	}
