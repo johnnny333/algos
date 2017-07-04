@@ -43,8 +43,8 @@ export class LinearSearch extends React.Component {
 
 	render() {
 
-		let found = this.state.found, currentIter = this.state.i, 
-			disabled = this.state.found != null ? true : false, 
+		let found = this.state.found, currentIter = this.state.i,
+			disabled = this.state.found != null ? true : false,
 			disabledInput =  this.state.key < this.state.a.length &&  this.state.key >= 0 ? true: false;
 
 		return (
@@ -67,7 +67,8 @@ export class LinearSearch extends React.Component {
 				<Form inline onSubmit={e => (e.preventDefault())}>
 					<span>{`Number to find (0 - ${this.state.a.length -1 }):`} </span>
 					<FormGroup validationState= { disabledInput ? "success" : "error"} bsSize="large" >
-						<FormControl type="number" min={0} max={this.state.arrLength - 1} value={this.state.key} onChange = { this.handleChange }  />
+						<FormControl type="number" min={0} max={this.state.a.length - 1} value={this.state.key}
+							onChange = { this.handleChange }  />
 					</FormGroup>
 
 					<Button onClick={this.indexOf} disabled={disabled || !disabledInput} bsSize="large"><i className="fa fa-search"></i></Button>

@@ -11,7 +11,7 @@ div > span {
   background-color: rgba(128, 128, 128, 0.58);
   font-weight: bold;
   border: 2px transparent solid;
-  font-size: large; 
+  font-size: large;
   color: white;
   transition: background-color 0.3s;
 }
@@ -38,25 +38,25 @@ div.well > div:nth-child(1) > span:nth-child(1) {
   }
 
 div > span.found {
-  background-color: #FFEB3B; 
+  background-color: #FFEB3B;
   border: 2px orange solid;
-  color: orange; 
+  color: orange;
 }
 
 div > span.sorted {
-  background-color: #E91E63; 
+  background-color: #E91E63;
 }
 
 div > span.selected {
-  background-color: #607d8b; 
+  background-color: #607d8b;
 }
 
 .navbar {
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
 div#fizz-buzz-well {
-  height: 170px; 
+  height: 170px;
 }
 
 .well {
@@ -74,11 +74,11 @@ div#fizz-buzz-well {
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover,
 .dropdown-menu>.active>a:hover {
   color: white;
-  background-color:#C2185B; 
+  background-color:#C2185B;
 }
 
 .dropdown-menu>.active>a {
-  background-color: #880E4F; 
+  background-color: #880E4F;
 }
 
 /* Colors of text on navbar */
@@ -115,6 +115,12 @@ div.navbar-collapse.collapse > p > a,
   h1 small {
     font-size: 45%;
   }
+
+  .page-header {
+        height: 160px;
+        overflow: auto;
+        margin: 20px 0px;
+    }
 }
 
 form {
@@ -133,4 +139,9 @@ div.form-group{
 /* Size of label */
 form>span {
   font-size: larger;
+}
+
+
+.has-success .form-control {
+  border-color: #4CAF50;
 }
